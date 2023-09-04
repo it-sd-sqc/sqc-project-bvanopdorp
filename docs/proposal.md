@@ -10,3 +10,4 @@ Items of interest
 * Characters
 
 ## Proposed layout
+![Alt text](./layout.JPG "sample layout")
