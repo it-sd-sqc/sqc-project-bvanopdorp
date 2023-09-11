@@ -1,4 +1,4 @@
 # Your project name
-Your given and family name.
+Ben VanOpdorp
 
-A one-sentence description of your project.
+This site hosts an english translation of Homer's "The Odyssey"

@@ -1,0 +1,89 @@
+/* resets */
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+  list-style: none;
+	outline-style: none;
+}
+
+/* Dark Theme */
+
+body.dark {
+  background-color: #292929;
+  color: #e2e2e2;
+}
+
+#wrapper.dark {
+  background-color: #121212;
+}
+
+nav.dark {
+  background-color: #e2e2e2;
+  color: black;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: lightgray;
+}
+
+header {
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+
+#wrapper {
+  width: 80%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border-radius: 5px;
+}
+
+nav {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav li {
+  border: .125rem solid black;
+}
+
+nav a {
+  padding-left: 5px;
+  padding-right: 5px;
+  color: inherit;
+}
+
+#chapter-num {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+section{
+  display: flex;
+  margin: auto;
+}
+
+#content {
+  display: flex;
+  width: 80%;
+  margin-top: 2rem;
+  padding-bottom: 10px;
+}

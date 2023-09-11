@@ -6,7 +6,7 @@ const app = express();
 app.use(express.static('./public'));
 
 const displayPort = function () {
-  console.log('Listening on ' + PORT)
+  console.log('Listening on ' + PORT);
 }
 
 app.listen(PORT, displayPort);
