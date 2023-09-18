@@ -7,7 +7,8 @@ An English translation of Homer's epic poem: The Odyssey
 Items of interest
 -----------------
 * Chapters
-* Characters
+* Chapter Synopses
+* Footnotes
 
 ## Proposed layout
 ![Alt text](./layout.JPG "sample layout")
