@@ -8,7 +8,7 @@ This site hosts an english translation of Homer's "The Odyssey"
 erDiagram
   chapters {
     chapter_id SERIAL pk
-    chapter_numeral TEXT "Chapter number Roman Numeral"
+    chapter_title TEXT "Chapter title"
     chapter_content TEXT "Chapter text"
   }
   footnotes {
