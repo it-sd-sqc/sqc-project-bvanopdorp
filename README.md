@@ -16,3 +16,4 @@ erDiagram
     footnote_body TEXT "Footnote text"
   }
 ```
+MARCUS can handle rejection
