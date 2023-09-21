@@ -16,3 +16,4 @@ erDiagram
     footnote_body TEXT "Footnote text"
   }
 ```
+"Hello from Beizeng!"
