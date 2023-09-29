@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <script src="/site.js" async></script>
+  <script src="/theme.js"></script>
+  <title><%= locals?.title ? locals.title + ' • ' : '' %>The Odyssey by Homer</title>
+</head>
+<body>
+  <div id="wrapper">
+  <header>
+    <h1><a href="/">The Odyssey by Homer</a></h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/book">Book</a></li>
+        <li><a href="/chapters">Chapters</a></li>
+        <li><a href="/about">About</a></li>
+        <li><button type="button" onclick="toggleTheme()">🌙</button></li>
+      </ul>
+    </nav>
+  </header>

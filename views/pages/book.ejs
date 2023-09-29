@@ -1,0 +1,9 @@
+<%- include('../templates/header.ejs') %>
+<%- include('../templates/chapterGuide.ejs') %>
+
+<h3>Chapter Synopsis</h3>
+<p class="synopsis"><%= chapter.chapter_synopsis %></p>
+<section id="content">
+  <%- chapter.chapter_body %>
+</section>
+<%- include('../templates/footer.ejs') %>

@@ -1,0 +1,10 @@
+<span id="chapter-num">
+  <label for="chapters">Chapter:</label>
+  <select name="chapters" id="chapters" onchange="changeChapter()">
+    <% chapters.forEach(function(chapter) { %>
+      <option value="<%= chapter.chapter_id %>" <%= chapter.chapter_id == currentChapter ? 'selected' : '' %>>
+        <%= chapter.chapter_title %>
+      </option>
+      <% }); %>
+  </select>
+</span>

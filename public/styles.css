@@ -34,9 +34,15 @@ body {
 }
 
 header {
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
   left: 10px;
   top: 5px;
+}
+
+h1 {
+  text-align: center;
 }
 
 #wrapper {
@@ -57,11 +63,29 @@ nav {
 }
 
 nav ul {
+  padding: 0;
+  width: 100%;
+  max-width: 20em;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style-type: none;
 }
 
 nav li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: .125rem solid black;
+  border-radius: 15%;
+  min-height: 2em;
+  min-width: 2em;
+}
+
+nav li button {
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
 
 nav a {
@@ -70,14 +94,29 @@ nav a {
   color: inherit;
 }
 
+nav li:hover {
+  background-color: #999;
+}
+
+nav li button:hover {
+  background-color: #999;
+}
+
 #chapter-num {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
 
+.synopsis {
+  width: 80%;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
 section{
   display: flex;
+  flex-direction: column;
   margin: auto;
 }
 
@@ -86,4 +125,9 @@ section{
   width: 80%;
   margin-top: 2rem;
   padding-bottom: 10px;
+}
+
+#content p {
+  text-indent: 1.5em;
+  margin-bottom: 1em;
 }

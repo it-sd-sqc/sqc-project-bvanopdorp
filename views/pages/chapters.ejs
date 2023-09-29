@@ -1,0 +1,11 @@
+<%- include('../templates/header.ejs') %>
+
+<% chapters.forEach(function(chapter) { %>
+  <h3>
+    <a href="/book/<%= chapter.chapter_id%>">
+      <%= chapter.chapter_title %>
+    </a>
+  </h3>
+  <p class="synopsis"><%= chapter.chapter_synopsis %></p>
+  <% }); %>
+  <%- include('../templates/footer.ejs') %>
