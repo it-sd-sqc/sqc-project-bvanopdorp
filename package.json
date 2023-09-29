@@ -23,6 +23,7 @@
     "stylelint-config-standard": "^34.0.0"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "pg": "^8.11.3"
