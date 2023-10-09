@@ -1,6 +1,6 @@
-\encoding UTF8
-DROP TABLE IF EXISTS chapters;
+SET client_encoding = 'UTF8';
 DROP TABLE IF EXISTS footnotes;
+DROP TABLE IF EXISTS chapters;
 
 CREATE TABLE chapters (
   chapter_id SERIAL PRIMARY KEY,
@@ -11,7 +11,9 @@ CREATE TABLE chapters (
 
 CREATE TABLE footnotes (
   footnote_id SERIAL PRIMARY KEY,
-  footnote_body TEXT NOT NULL
+  footnote_chapter_id SERIAL,
+  footnote_body TEXT NOT NULL,
+  FOREIGN KEY (footnote_chapter_id) REFERENCES chapters (chapter_id)
 );
 
 INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
@@ -42,8 +44,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       Now Neptune had gone off to the Ethiopians, who are at the world’s end,
-      and lie in two halves, the one looking West and the other East.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-1" id="linknoteref-1"
-        class="pginternal"><sup>[1]</sup></a> He had gone there to
+      and lie in two halves, the one looking West and the other East.<a href="#footnote-1" id="linknoteref-1" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> He had gone there to
       accept a hecatomb of sheep and oxen, and was enjoying himself at his festival;
       but the other gods met in the house of Olympian Jove, and the sire of gods and
       men spoke first. At that moment he was thinking of Aegisthus, who had been
@@ -132,8 +133,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       took her spear and set it in the spear-stand against a strong bearing-post
       along with the many other spears of his unhappy father, and he conducted her to
       a richly decorated seat under which he threw a cloth of damask. There was a
-      footstool also for her feet,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-2"
-        id="linknoteref-2" class="pginternal"><sup>[2]</sup></a> and he set another seat near her for
+      footstool also for her feet,<a href="#footnote-2" id="linknoteref-2" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> and he set another seat near her for
       himself, away from the suitors, that she might not be annoyed while eating by
       their noise and insolence, and that he might ask her more freely about his
       father.
@@ -149,8 +149,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
     </p>
 
 <p>
-      Then the suitors came in and took their places on the benches and seats.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-3" id="linknoteref-3"
-        class="pginternal"><sup>[3]</sup></a> Forthwith men
+      Then the suitors came in and took their places on the benches and seats.<a href="#footnote-3" id="linknoteref-3" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> Forthwith men
       servants poured water over their hands, maids went round with the
       bread-baskets, pages filled the mixing-bowls with wine and water, and they laid
       their hands upon the good things that were before them. As soon as they had had
@@ -182,13 +181,10 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       And Minerva answered, “I will tell you truly and particularly all about
       it. I am Mentes, son of Anchialus, and I am King of the Taphians. I have come
       here with my ship and crew, on a voyage to men of a foreign tongue being bound
-      for Temesa<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-4" id="linknoteref-4"
-        class="pginternal"><sup>[4]</sup></a> with a
+      for Temesa<a href="#footnote-4" id="linknoteref-4" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> with a
       cargo of iron, and I shall bring back copper. As for my ship, it lies over
-      yonder off the open country away from the town, in the harbour Rheithron<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-5" id="linknoteref-5"
-        class="pginternal"><sup>[5]</sup></a> under the wooded
-      mountain Neritum.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-6"
-        id="linknoteref-6" class="pginternal"><sup>[6]</sup></a>
+      yonder off the open country away from the town, in the harbour Rheithron<a href="#footnote-5" id="linknoteref-5" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> under the wooded
+      mountain Neritum.<a href="#footnote-6" id="linknoteref-6" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a>
       Our fathers were friends before us, as old Laertes will tell you, if you will
       go and ask him. They say, however, that he never comes to town now, and lives
       by himself in the country, faring hardly, with an old woman to look after him
@@ -240,8 +236,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       chiefs from all our islands, Dulichium, Same, and the woodland island of
       Zacynthus, as also all the principal men of Ithaca itself, are eating up my
       house under the pretext of paying their court to my mother, who will neither
-      point blank say that she will not marry,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-7" id="linknoteref-7"
-        class="pginternal"><sup>[7]</sup></a> nor yet bring matters to an end; so
+      point blank say that she will not marry,<a href="#footnote-7" id="linknoteref-7" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a> nor yet bring matters to an end; so
       they are making havoc of my estate, and before long will do so also with
       myself.”
     </p>
@@ -316,8 +311,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       Achaeans. Penelope, daughter of Icarius, heard his song from her room upstairs,
       and came down by the great staircase, not alone, but attended by two of her
       handmaids. When she reached the suitors she stood by one of the bearing posts
-      that supported the roof of the cloisters<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-8" id="linknoteref-8"
-        class="pginternal"><sup>[8]</sup></a> with a staid maiden on either side of
+      that supported the roof of the cloisters<a href="#footnote-8" id="linknoteref-8" class="pginternal"><sup>[8]</sup><span class="tooltip"></span></a> with a staid maiden on either side of
       her. She held a veil, moreover, before her face, and was weeping bitterly.
     </p>
 
@@ -327,8 +321,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       and let them drink their wine in silence, but cease this sad tale, for it
       breaks my sorrowful heart, and reminds me of my lost husband whom I mourn ever
       without ceasing, and whose name was great over all Hellas and middle
-      Argos.”<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-9" id="linknoteref-9"
-        class="pginternal"><sup>[9]</sup></a>
+      Argos.”<a href="#footnote-9" id="linknoteref-9" class="pginternal"><sup>[9]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -341,8 +334,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       Troy, but many another went down as well as he. Go, then, within the house and
       busy yourself with your daily duties, your loom, your distaff, and the ordering
       of your servants; for speech is man’s matter, and mine above all others
-      <a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-10" id="linknoteref-10"
-        class="pginternal"><sup>[10]</sup></a>—for it
+      <a href="#footnote-10" id="linknoteref-10" class="pginternal"><sup>[10]</sup><span class="tooltip"></span></a>—for it
       is I who am master here.”
     </p>
 
@@ -350,8 +342,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       She went wondering back into the house, and laid her son’s saying in her
       heart. Then, going upstairs with her handmaids into her room, she mourned her
       dear husband till Minerva shed sweet sleep over her eyes. But the suitors were
-      clamorous throughout the covered cloisters<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-11" id="linknoteref-11"
-        class="pginternal"><sup>[11]</sup></a>, and prayed each one that he might be
+      clamorous throughout the covered cloisters<a href="#footnote-11" id="linknoteref-11" class="pginternal"><sup>[11]</sup><span class="tooltip"></span></a>, and prayed each one that he might be
       her bed fellow.
     </p>
 
@@ -405,25 +396,20 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       The suitors then returned to their singing and dancing until the evening; but
       when night fell upon their pleasuring they went home to bed each in his own
-      abode.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-12" id="linknoteref-12"
-        class="pginternal"><sup>[12]</sup></a>
-      Telemachus’s room was high up in a tower<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-13" id="linknoteref-13"
-        class="pginternal"><sup>[13]</sup></a> that looked on to the outer court;
+      abode.<a href="#footnote-12" id="linknoteref-12" class="pginternal"><sup>[12]</sup><span class="tooltip"></span></a>
+      Telemachus’s room was high up in a tower<a href="#footnote-13" id="linknoteref-13" class="pginternal"><sup>[13]</sup><span class="tooltip"></span></a> that looked on to the outer court;
       hither, then, he hied, brooding and full of thought. A good old woman,
       Euryclea, daughter of Ops, the son of Pisenor, went before him with a couple of
       blazing torches. Laertes had bought her with his own money when she was quite
       young; he gave the worth of twenty oxen for her, and shewed as much respect to
       her in his household as he did to his own wedded wife, but he did not take her
-      to his bed for he feared his wife’s resentment.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-14" id="linknoteref-14"
-        class="pginternal"><sup>[14]</sup></a> She it was who now lighted Telemachus
+      to his bed for he feared his wife’s resentment.<a href="#footnote-14" id="linknoteref-14" class="pginternal"><sup>[14]</sup><span class="tooltip"></span></a> She it was who now lighted Telemachus
       to his room, and she loved him better than any of the other women in the house
       did, for she had nursed him when he was a baby. He opened the door of his bed
-      room and sat down upon the bed; as he took off his shirt<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-15" id="linknoteref-15"
-        class="pginternal"><sup>[15]</sup></a> he gave it to the good old woman, who
+      room and sat down upon the bed; as he took off his shirt<a href="#footnote-15" id="linknoteref-15" class="pginternal"><sup>[15]</sup><span class="tooltip"></span></a> he gave it to the good old woman, who
       folded it tidily up, and hung it for him over a peg by his bed side, after
       which she went out, pulled the door to by a silver catch, and drew the bolt
-      home by means of the strap.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-16"
-        id="linknoteref-16" class="pginternal"><sup>[16]</sup></a> But Telemachus as he lay covered with
+      home by means of the strap.<a href="#footnote-16" id="linknoteref-16" class="pginternal"><sup>[16]</sup><span class="tooltip"></span></a> But Telemachus as he lay covered with
       a woollen fleece kept thinking all night through of his intended voyage and of
       the counsel that Minerva had given him.
     </p>'),
@@ -447,8 +433,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       Aegyptius, a man bent double with age, and of infinite experience, was the
       first to speak. His son Antiphus had gone with Ulysses to Ilius, land of noble
       steeds, but the savage Cyclops had killed him when they were all shut up in the
-      cave, and had cooked his last dinner for him.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-17" id="linknoteref-17"
-        class="pginternal"><sup>[17]</sup></a> He had three sons left, of whom two
+      cave, and had cooked his last dinner for him.<a href="#footnote-1" id="linknoteref-17" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> He had three sons left, of whom two
       still worked on their father’s land, while the third, Eurynomus, was one
       of the suitors; nevertheless their father could not get over the loss of
       Antiphus, and was still weeping for him when he began his speech.
@@ -488,14 +473,12 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       your own consciences and to public opinion. Fear, too, the wrath of heaven,
       lest the gods should be displeased and turn upon you. I pray you by Jove and
       Themis, who is the beginning and the end of councils, [do not] hold back, my
-      friends, and leave me singlehanded<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-18" id="linknoteref-18"
-        class="pginternal"><sup>[18]</sup></a>—unless it be that my brave
+      friends, and leave me singlehanded<a href="#footnote-2" id="linknoteref-18" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a>—unless it be that my brave
       father Ulysses did some wrong to the Achaeans which you would now avenge on me,
       by aiding and abetting these suitors. Moreover, if I am to be eaten out of
       house and home at all, I had rather you did the eating yourselves, for I could
       then take action against you to some purpose, and serve you with notices from
-      house to house till I got paid in full, whereas now I have no remedy.”<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-19" id="linknoteref-19"
-        class="pginternal"><sup>[19]</sup></a>
+      house to house till I got paid in full, whereas now I have no remedy.”<a href="#footnote-3" id="linknoteref-19" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -623,8 +606,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
     </p>
 
 <p>
-      With these words he sat down, and Mentor<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-20" id="linknoteref-20"
-        class="pginternal"><sup>[20]</sup></a> who had been a friend of Ulysses, and
+      With these words he sat down, and Mentor<a href="#footnote-4" id="linknoteref-20" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> who had been a friend of Ulysses, and
       had been left in charge of everything with full authority over the servants,
       rose to speak. He, then, plainly and in all honesty addressed them thus:
     </p>
@@ -720,8 +702,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       As he spoke he snatched his hand from that of Antinous. Meanwhile the others
-      went on getting dinner ready about the buildings,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-21" id="linknoteref-21"
-        class="pginternal"><sup>[21]</sup></a> jeering at him tauntingly as they did
+      went on getting dinner ready about the buildings,<a href="#footnote-5" id="linknoteref-21" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> jeering at him tauntingly as they did
       so.
     </p>
 
@@ -826,10 +807,8 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       brought the things as he told them, Telemachus went on board, Minerva going
       before him and taking her seat in the stern of the vessel, while Telemachus sat
       beside her. Then the men loosed the hawsers and took their places on the
-      benches. Minerva sent them a fair wind from the West,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-22" id="linknoteref-22"
-        class="pginternal"><sup>[22]</sup></a> that whistled over the deep blue
-      waves<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-23" id="linknoteref-23"
-        class="pginternal"><sup>[23]</sup></a> whereon
+      benches. Minerva sent them a fair wind from the West,<a href="#footnote-6" id="linknoteref-22" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a> that whistled over the deep blue
+      waves<a href="#footnote-7" id="linknoteref-23" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a> whereon
       Telemachus told them to catch hold of the ropes and hoist sail, and they did as
       he told them. They set the mast in its socket in the cross plank, raised it,
       and made it fast with the forestays; then they hoisted their white sails aloft
@@ -847,14 +826,12 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 ('BOOK III', '
       TELEMACHUS VISITS NESTOR AT PYLOS.
     ', '<p>
-      but as the sun was rising from the fair sea<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-24" id="linknoteref-24"
-        class="pginternal"><sup>[24]</sup></a> into the firmament of heaven to shed
+      but as the sun was rising from the fair sea<a href="#footnote-1" id="linknoteref-24" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> into the firmament of heaven to shed
       light on mortals and immortals, they reached Pylos the city of Neleus. Now the
       people of Pylos were gathered on the sea shore to offer sacrifice of black
       bulls to Neptune lord of the Earthquake. There were nine guilds with five
       hundred men in each, and there were nine bulls to each guild. As they were
-      eating the inward meats<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-25"
-        id="linknoteref-25" class="pginternal"><sup>[25]</sup></a> and burning the thigh bones [on the
+      eating the inward meats<a href="#footnote-2" id="linknoteref-25" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> and burning the thigh bones [on the
       embers] in the name of Neptune, Telemachus and his crew arrived, furled their
       sails, brought their ship to anchor, and went ashore.
     </p>
@@ -886,8 +863,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       She then went quickly on, and Telemachus followed in her steps till they
       reached the place where the guilds of the Pylian people were assembled. There
       they found Nestor sitting with his sons, while his company round him were busy
-      getting dinner ready, and putting pieces of meat on to the spits<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-26" id="linknoteref-26"
-        class="pginternal"><sup>[26]</sup></a> while other
+      getting dinner ready, and putting pieces of meat on to the spits<a href="#footnote-3" id="linknoteref-26" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> while other
       pieces were cooking. When they saw the strangers they crowded round them, took
       them by the hand and bade them take their places. Nestor’s son
       Pisistratus at once offered his hand to each of them, and seated them on some
@@ -908,8 +884,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       As he spoke he handed her the cup. Minerva thought it very right and proper of
-      him to have given it to herself first;<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-27" id="linknoteref-27"
-        class="pginternal"><sup>[27]</sup></a> she accordingly began praying
+      him to have given it to herself first;<a href="#footnote-4" id="linknoteref-27" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> she accordingly began praying
       heartily to Neptune. “O thou,” she cried, “that encirclest
       the earth, vouchsafe to grant the prayers of thy servants that call upon thee.
       More especially we pray thee send down thy grace on Nestor and on his sons;
@@ -943,8 +918,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       “Nestor,” said he, “son of Neleus, honour to the Achaean
       name, you ask whence we come, and I will tell you. We come from Ithaca under
-      Neritum,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-28" id="linknoteref-28"
-        class="pginternal"><sup>[28]</sup></a> and
+      Neritum,<a href="#footnote-5" id="linknoteref-28" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> and
       the matter about which I would speak is of private not public import. I seek
       news of my unhappy father Ulysses, who is said to have sacked the town of Troy
       in company with yourself. We know what fate befell each one of the other heroes
@@ -1018,8 +992,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       headland of Mimas. So we asked heaven for a sign, and were shown one to the
       effect that we should be soonest out of danger if we headed our ships across
       the open sea to Euboea. This we therefore did, and a fair wind sprang up which
-      gave us a quick passage during the night to Geraestus,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-29" id="linknoteref-29"
-        class="pginternal"><sup>[29]</sup></a> where we offered many sacrifices to
+      gave us a quick passage during the night to Geraestus,<a href="#footnote-6" id="linknoteref-29" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a> where we offered many sacrifices to
       Neptune for having helped us so far on our way. Four days later Diomed and his
       men stationed their ships in Argos, but I held on for Pylos, and the wind never
       fell light from the day when heaven first made it fair for me.
@@ -1106,8 +1079,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       “At first she would have nothing to do with his wicked scheme, for she
-      was of a good natural disposition;<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-30" id="linknoteref-30"
-        class="pginternal"><sup>[30]</sup></a> moreover there was a bard with her,
+      was of a good natural disposition;<a href="#footnote-7" id="linknoteref-30" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a> moreover there was a bard with her,
       to whom Agamemnon had given strict orders on setting out for Troy, that he was
       to keep guard over his wife; but when heaven had counselled her destruction,
       Aegisthus carried this bard off to a desert island and left him there for crows
@@ -1141,8 +1113,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       Orestes came back from Athens to be his bane, and killed the murderer of his
       father. Then he celebrated the funeral rites of his mother and of false
       Aegisthus by a banquet to the people of Argos, and on that very day Menelaus
-      came home,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-31" id="linknoteref-31"
-        class="pginternal"><sup>[31]</sup></a> with
+      came home,<a href="#footnote-8" id="linknoteref-31" class="pginternal"><sup>[8]</sup><span class="tooltip"></span></a> with
       as much treasure as his ships could carry.
     </p>
 
@@ -1270,8 +1241,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
     </p>
 
 <p>
-      When they had done praying and sprinkling the barley meal<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-32" id="linknoteref-32"
-        class="pginternal"><sup>[32]</sup></a> Thrasymedes dealt his blow, and
+      When they had done praying and sprinkling the barley meal<a href="#footnote-9" id="linknoteref-32" class="pginternal"><sup>[9]</sup><span class="tooltip"></span></a> Thrasymedes dealt his blow, and
       brought the heifer down with a stroke that cut through the tendons at the base
       of her neck, whereon the daughters and daughters in law of Nestor, and his
       venerable wife Eurydice (she was eldest daughter to Clymenus) screamed with
@@ -1288,8 +1258,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       Meanwhile lovely Polycaste, Nestor’s youngest daughter, washed
       Telemachus. When she had washed him and anointed him with oil, she brought him
-      a fair mantle and shirt,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-33"
-        id="linknoteref-33" class="pginternal"><sup>[33]</sup></a> and he looked like a god as he came
+      a fair mantle and shirt,<a href="#footnote-10" id="linknoteref-33" class="pginternal"><sup>[10]</sup><span class="tooltip"></span></a> and he looked like a god as he came
       from the bath and took his seat by the side of Nestor. When the outer meats
       were done they drew them off the spits and sat down to dinner where they were
       waited upon by some worthy henchmen, who kept pouring them out their wine in
@@ -1310,12 +1279,10 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       and grandson to Alpheus. Here they passed the night and Diocles entertained
       them hospitably. When the child of morning, rosy-fingered Dawn, appeared, they
       again yoked their horses and drove out through the gateway under the echoing
-      gatehouse.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-34" id="linknoteref-34"
-        class="pginternal"><sup>[34]</sup></a>
+      gatehouse.<a href="#footnote-11" id="linknoteref-34" class="pginternal"><sup>[11]</sup><span class="tooltip"></span></a>
       Pisistratus lashed the horses on and they flew forward nothing loth; presently
       they came to the corn lands of the open country, and in the course of time
-      completed their journey, so well did their steeds take them.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-35" id="linknoteref-35"
-        class="pginternal"><sup>[35]</sup></a>
+      completed their journey, so well did their steeds take them.<a href="#footnote-12" id="linknoteref-35" class="pginternal"><sup>[12]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -1326,16 +1293,14 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       ITHACA PLOT AGAINST TELEMACHUS.
     ', '<p>
       they reached the low lying city of Lacedaemon, where they drove straight to the
-      abode of Menelaus<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-36"
-        id="linknoteref-36" class="pginternal"><sup>[36]</sup></a> [and found him in his own house,
+      abode of Menelaus<a href="#footnote-1" id="linknoteref-36" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> [and found him in his own house,
       feasting with his many clansmen in honour of the wedding of his son, and also
       of his daughter, whom he was marrying to the son of that valiant warrior
       Achilles. He had given his consent and promised her to him while he was still
       at Troy, and now the gods were bringing the marriage about; so he was sending
       her with chariots and horses to the city of the Myrmidons over whom
       Achilles’ son was reigning. For his only son he had found a bride from
-      Sparta,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-37" id="linknoteref-37"
-        class="pginternal"><sup>[37]</sup></a> the
+      Sparta,<a href="#footnote-2" id="linknoteref-37" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> the
       daughter of Alector. This son, Megapenthes, was born to him of a bondwoman, for
       heaven vouchsafed Helen no more children after she had borne Hermione, who was
       fair as golden Venus herself.
@@ -1345,8 +1310,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       So the neighbours and kinsmen of Menelaus were feasting and making merry in his
       house. There was a bard also to sing to them and play his lyre, while two
       tumblers went about performing in the midst of them when the man struck up with
-      his tune.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-38" id="linknoteref-38"
-        class="pginternal"><sup>[38]</sup></a>
+      his tune.<a href="#footnote-3" id="linknoteref-38" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -1394,14 +1358,12 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
     </p>
 
 <p>
-      On this he handed them<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-39"
-        id="linknoteref-39" class="pginternal"><sup>[39]</sup></a> a piece of fat roast loin, which had
+      On this he handed them<a href="#footnote-4" id="linknoteref-39" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> a piece of fat roast loin, which had
       been set near him as being a prime part, and they laid their hands on the good
       things that were before them; as soon as they had had enough to eat and drink,
       Telemachus said to the son of Nestor, with his head so close that no one might
       hear, “Look, Pisistratus, man after my own heart, see the gleam of bronze
-      and gold—of amber,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-40"
-        id="linknoteref-40" class="pginternal"><sup>[40]</sup></a> ivory, and silver. Everything is so
+      and gold—of amber,<a href="#footnote-5" id="linknoteref-40" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> ivory, and silver. Everything is so
       splendid that it is like seeing the palace of Olympian Jove. I am lost in
       admiration.”
     </p>
@@ -1420,8 +1382,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       great riches among these people, my brother was secretly and shockingly
       murdered through the perfidy of his wicked wife, so that I have no pleasure in
       being lord of all this wealth. Whoever your parents may be they must have told
-      you about all this, and of my heavy loss in the ruin<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-41" id="linknoteref-41"
-        class="pginternal"><sup>[41]</sup></a> of a stately mansion fully and
+      you about all this, and of my heavy loss in the ruin<a href="#footnote-6" id="linknoteref-41" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a> of a stately mansion fully and
       magnificently furnished. Would that I had only a third of what I now have so
       that I had stayed at home, and all those were living who perished on the plain
       of Troy, far from Argos. I often grieve, as I sit here in my house, for one and
@@ -1455,8 +1416,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       box that ran on wheels, with a gold band round the top of it. Phylo now placed
       this by her side, full of fine spun yarn, and a distaff charged with violet
       coloured wool was laid upon the top of it. Then Helen took her seat, put her
-      feet upon the footstool, and began to question her husband.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-42" id="linknoteref-42"
-        class="pginternal"><sup>[42]</sup></a>
+      feet upon the footstool, and began to question her husband.<a href="#footnote-7" id="linknoteref-42" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -1581,8 +1541,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       true. I have travelled much, and have had much to do with heroes, but I have
       never seen such another man as Ulysses. What endurance too, and what courage he
       displayed within the wooden horse, wherein all the bravest of the Argives were
-      lying in wait to bring death and destruction upon the Trojans.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-43" id="linknoteref-43"
-        class="pginternal"><sup>[43]</sup></a> At that moment
+      lying in wait to bring death and destruction upon the Trojans.<a href="#footnote-8" id="linknoteref-43" class="pginternal"><sup>[8]</sup><span class="tooltip"></span></a> At that moment
       you came up to us; some god who wished well to the Trojans must have set you on
       to it and you had Deiphobus with you. Three times did you go all round our
       hiding place and pat it; you called our chiefs each by his own name, and
@@ -1709,8 +1668,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       sleep in a great sea cave, where the seals—Halosydne’s chickens as
       they call them—come up also from the grey sea, and go to sleep in shoals
       all round him; and a very strong and fish-like smell do they bring with them.
-      <a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-44" id="linknoteref-44"
-        class="pginternal"><sup>[44]</sup></a> Early
+      <a href="#footnote-9" id="linknoteref-44" class="pginternal"><sup>[9]</sup><span class="tooltip"></span></a> Early
       to-morrow morning I will take you to this place and will lay you in ambush.
       Pick out, therefore, the three best men you have in your fleet, and I will tell
       you all the tricks that the old man will play you.
@@ -1746,13 +1704,11 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       sat down to wait till we should come up. When we were close to her, she made us
       lie down in the pits one after the other, and threw a seal skin over each of
       us. Our ambuscade would have been intolerable, for the stench of the fishy
-      seals was most distressing<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-45"
-        id="linknoteref-45" class="pginternal"><sup>[45]</sup></a>—who would go to bed with a sea
+      seals was most distressing<a href="#footnote-10" id="linknoteref-45" class="pginternal"><sup>[10]</sup><span class="tooltip"></span></a>—who would go to bed with a sea
       monster if he could help it?—but here, too, the goddess helped us, and
       thought of something that gave us great relief, for she put some ambrosia under
       each man’s nostrils, which was so fragrant that it killed the smell of
-      the seals.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-46" id="linknoteref-46"
-        class="pginternal"><sup>[46]</sup></a>
+      the seals.<a href="#footnote-11" id="linknoteref-46" class="pginternal"><sup>[11]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -1791,8 +1747,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       “I was broken hearted when I heard that I must go back all that long and
-      terrible voyage to Egypt;<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-47"
-        id="linknoteref-47" class="pginternal"><sup>[47]</sup></a> nevertheless, I answered, ‘I
+      terrible voyage to Egypt;<a href="#footnote-12" id="linknoteref-47" class="pginternal"><sup>[12]</sup><span class="tooltip"></span></a> nevertheless, I answered, ‘I
       will do all, old man, that you have laid upon me; but now tell me, and tell me
       true, whether all the Achaeans whom Nestor and I left behind us when we set
       sail from Troy have got home safely, or whether any one of them came to a bad
@@ -1910,8 +1865,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       also meadow-sweet and wheat and barley, and oats with their white and spreading
       ears; whereas in Ithaca we have neither open fields nor racecourses, and the
       country is more fit for goats than horses, and I like it the better for that.
-      <a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-48" id="linknoteref-48"
-        class="pginternal"><sup>[48]</sup></a> None of our
+      <a href="#footnote-13" id="linknoteref-48" class="pginternal"><sup>[13]</sup><span class="tooltip"></span></a> None of our
       islands have much level ground, suitable for horses, and Ithaca least of
       all.”
     </p>
@@ -1930,8 +1884,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       Thus did they converse [and guests kept coming to the king’s house. They
       brought sheep and wine, while their wives had put up bread for them to take
-      with them; so they were busy cooking their dinners in the courts].<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-49" id="linknoteref-49"
-        class="pginternal"><sup>[49]</sup></a>
+      with them; so they were busy cooking their dinners in the courts].<a href="#footnote-14" id="linknoteref-49" class="pginternal"><sup>[14]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -2213,8 +2166,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       When he had thus spoken, he said to his son Mercury, “Mercury, you are
       our messenger, go therefore and tell Calypso we have decreed that poor Ulysses
       is to return home. He is to be convoyed neither by gods nor men, but after a
-      perilous voyage of twenty days upon a raft he is to reach fertile Scheria,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-50" id="linknoteref-50"
-        class="pginternal"><sup>[50]</sup></a> the land of the
+      perilous voyage of twenty days upon a raft he is to reach fertile Scheria,<a href="#footnote-1" id="linknoteref-50" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> the land of the
       Phaeacians, who are near of kin to the gods, and will honour him as though he
       were one of ourselves. They will send him in a ship to his own country, and
       will give him more bronze and gold and raiment than he would have brought back
@@ -2247,8 +2199,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       luxuriantly about the mouth of the cave; there were also four running rills of
       water in channels cut pretty close together, and turned hither and thither so
       as to irrigate the beds of violets and luscious herbage over which they flowed.
-      <a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-51" id="linknoteref-51"
-        class="pginternal"><sup>[51]</sup></a> Even a god
+      <a href="#footnote-2" id="linknoteref-51" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> Even a god
       could not help being charmed with such a lovely spot, so Mercury stood still
       and looked at it; but when he had admired it sufficiently he went inside the
       cave.
@@ -2280,8 +2231,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       cross Jove, nor transgress his orders. He says that you have here the most
       ill-starred of all those who fought nine years before the city of King Priam
       and sailed home in the tenth year after having sacked it. On their way home
-      they sinned against Minerva,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-52"
-        id="linknoteref-52" class="pginternal"><sup>[52]</sup></a> who raised both wind and waves
+      they sinned against Minerva,<a href="#footnote-3" id="linknoteref-52" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> who raised both wind and waves
       against them, so that all his brave companions perished, and he alone was
       carried hither by wind and tide. Jove says that you are to let this man go at
       once, for it is decreed that he shall not perish here, far from his own people,
@@ -2399,8 +2349,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       to it. She also gave him a sharp adze, and then led the way to the far end of
       the island where the largest trees grew—alder, poplar and pine, that
       reached the sky—very dry and well seasoned, so as to sail light for him
-      in the water.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-53"
-        id="linknoteref-53" class="pginternal"><sup>[53]</sup></a>
+      in the water.<a href="#footnote-4" id="linknoteref-53" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a>
       Then, when she had shown him where the best trees grew, Calypso went home,
       leaving him to cut them, which he soon finished doing. He cut down twenty trees
       in all and adzed them smooth, squaring them by rule in good workmanlike
@@ -2598,8 +2547,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       a river with sea-water, so that he could neither breathe nor speak, and lay
       swooning from sheer exhaustion; presently, when he had got his breath and came
       to himself again, he took off the scarf that Ino had given him and threw it
-      back into the salt<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-54"
-        id="linknoteref-54" class="pginternal"><sup>[54]</sup></a> stream of the river, whereon Ino
+      back into the salt<a href="#footnote-5" id="linknoteref-54" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> stream of the river, whereon Ino
       received it into her hands from the wave that bore it towards her. Then he left
       the river, laid himself down among the rushes, and kissed the bounteous earth.
     </p>
@@ -2793,8 +2741,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       wondered at it exactly as I now admire and wonder at yourself. I dare not clasp
       your knees, but I am in great distress; yesterday made the twentieth day that I
       had been tossing about upon the sea. The winds and waves have taken me all the
-      way from the Ogygian island,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-55"
-        id="linknoteref-55" class="pginternal"><sup>[55]</sup></a> and now fate has flung me upon this
+      way from the Ogygian island,<a href="#footnote-1" id="linknoteref-55" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> and now fate has flung me upon this
       coast that I may endure still further suffering; for I do not think that I have
       yet come to the end of it, but rather that heaven has still much evil in store
       for me.
@@ -2843,8 +2790,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       women, please to stand a little on one side that I may wash the brine from my
       shoulders and anoint myself with oil, for it is long enough since my skin has
       had a drop of oil upon it. I cannot wash as long as you all keep standing
-      there. I am ashamed to strip<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-56"
-        id="linknoteref-56" class="pginternal"><sup>[56]</sup></a> before a number of good looking young
+      there. I am ashamed to strip<a href="#footnote-2" id="linknoteref-56" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> before a number of good looking young
       women.”
     </p>
 
@@ -2968,8 +2914,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       own room, where an old servant, Eurymedusa of Apeira, lit the fire for her.
       This old woman had been brought by sea from Apeira, and had been chosen as a
       prize for Alcinous because he was king over the Phaeacians, and the people
-      obeyed him as though he were a god.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-57" id="linknoteref-57"
-        class="pginternal"><sup>[57]</sup></a> She had been nurse to Nausicaa, and
+      obeyed him as though he were a god.<a href="#footnote-1" id="linknoteref-57" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> She had been nurse to Nausicaa, and
       had now lit the fire for her, and brought her supper for her into her own room.
     </p>
 
@@ -3021,8 +2966,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       “Neptune, however, lay with his daughter, and she had a son by him, the
       great Nausithous, who reigned over the Phaeacians. Nausithous had two sons
-      Rhexenor and Alcinous;<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-58"
-        id="linknoteref-58" class="pginternal"><sup>[58]</sup></a> Apollo killed the first of them while
+      Rhexenor and Alcinous;<a href="#footnote-2" id="linknoteref-58" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> Apollo killed the first of them while
       he was still a bridegroom and without male issue; but he left a daughter Arete,
       whom Alcinous married, and honours as no other woman is honoured of all those
       that keep house along with their husbands.
@@ -3039,8 +2983,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
     </p>
 
 <p>
-      Then Minerva left Scheria and went away over the sea. She went to Marathon<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-59" id="linknoteref-59"
-        class="pginternal"><sup>[59]</sup></a> and to the
+      Then Minerva left Scheria and went away over the sea. She went to Marathon<a href="#footnote-3" id="linknoteref-59" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> and to the
       spacious streets of Athens, where she entered the abode of Erechtheus; but
       Ulysses went on to the house of Alcinous, and he pondered much as he paused a
       while before reaching the threshold of bronze, for the splendour of the palace
@@ -3059,8 +3002,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       of the Phaeacians used to sit and eat and drink, for there was abundance at all
       seasons; and there were golden figures of young men with lighted torches in
       their hands, raised on pedestals, to give light by night to those who were at
-      table. There are<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-60"
-        id="linknoteref-60" class="pginternal"><sup>[60]</sup></a> fifty maid servants in the house,
+      table. There are<a href="#footnote-4" id="linknoteref-60" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> fifty maid servants in the house,
       some of whom are always grinding rich yellow grain at the mill, while others
       work at the loom, or sit and spin, and their shuttles go backwards and forwards
       like the fluttering of aspen leaves, while the linen is so closely woven that
@@ -3093,8 +3035,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       long enough he crossed the threshold and went within the precincts of the
       house. There he found all the chief people among the Phaeacians making their
       drink offerings to Mercury, which they always did the last thing before going
-      away for the night.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-61"
-        id="linknoteref-61" class="pginternal"><sup>[61]</sup></a> He went straight through the court,
+      away for the night.<a href="#footnote-5" id="linknoteref-61" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> He went straight through the court,
       still hidden by the cloak of darkness in which Minerva had enveloped him, till
       he reached Arete and King Alcinous; then he laid his hands upon the knees of
       the queen, and at that moment the miraculous darkness fell away from him and he
@@ -3161,8 +3102,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       clear to us when we have been offering them hecatombs. They come and sit at our
       feasts just like one of our selves, and if any solitary wayfarer happens to
       stumble upon some one or other of them, they affect no concealment, for we are
-      as near of kin to the gods as the Cyclopes and the savage giants are.”<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-62" id="linknoteref-62"
-        class="pginternal"><sup>[62]</sup></a>
+      as near of kin to the gods as the Cyclopes and the savage giants are.”<a href="#footnote-6" id="linknoteref-62" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -3177,8 +3117,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       sorrows and dwell only on the due replenishing of itself. As for yourselves, do
       as you propose, and at break of day set about helping me to get home. I shall
       be content to die if I may first once more behold my property, my bondsmen, and
-      all the greatness of my house.”<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-63"
-        id="linknoteref-63" class="pginternal"><sup>[63]</sup></a>
+      all the greatness of my house.”<a href="#footnote-7" id="linknoteref-63" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -3267,8 +3206,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       become my son-in-law. If you will stay I will give you a house and an estate,
       but no one (heaven forbid) shall keep you here against your own wish, and that
       you may be sure of this I will attend tomorrow to the matter of your escort.
-      You can sleep<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-64"
-        id="linknoteref-64" class="pginternal"><sup>[64]</sup></a>
+      You can sleep<a href="#footnote-8" id="linknoteref-64" class="pginternal"><sup>[8]</sup><span class="tooltip"></span></a>
       during the whole voyage if you like, and the men shall sail you over smooth
       waters either to your own home, or wherever you please, even though it be a
       long way further off than Euboea, which those of my people who saw it when they
@@ -3333,8 +3271,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       way soon enough. Let us draw a ship into the sea—one that has never yet
       made a voyage—and man her with two and fifty of our smartest young
       sailors. Then when you have made fast your oars each by his own seat, leave the
-      ship and come to my house to prepare a feast.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-65" id="linknoteref-65"
-        class="pginternal"><sup>[65]</sup></a> I will find you in everything. I am
+      ship and come to my house to prepare a feast.<a href="#footnote-1" id="linknoteref-65" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> I will find you in everything. I am
       giving these instructions to the young men who will form the crew, for as
       regards you aldermen and town councillors, you will join me in entertaining our
       guest in the cloisters. I can take no excuses, and we will have Demodocus to
@@ -3349,8 +3286,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       her mast and sails inside her, bound the oars to the thole-pins with twisted
       thongs of leather, all in due course, and spread the white sails aloft. They
       moored the vessel a little way out from land, and then came on shore and went
-      to the house of King Alcinous. The out houses,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-66" id="linknoteref-66"
-        class="pginternal"><sup>[66]</sup></a> yards, and all the precincts were
+      to the house of King Alcinous. The out houses,<a href="#footnote-2" id="linknoteref-66" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> yards, and all the precincts were
       filled with crowds of men in great multitudes both old and young; and Alcinous
       killed them a dozen sheep, eight full grown pigs, and two oxen. These they
       skinned and dressed so as to provide a magnificent banquet.
@@ -3413,8 +3349,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       post, and they raised a dust upon the plain as they all flew forward at the
       same moment. Clytoneus came in first by a long way; he left every one else
       behind him by the length of the furrow that a couple of mules can plough in a
-      fallow field.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-67"
-        id="linknoteref-67" class="pginternal"><sup>[67]</sup></a>
+      fallow field.<a href="#footnote-3" id="linknoteref-67" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a>
       They then turned to the painful art of wrestling, and here Euryalus proved to
       be the best man. Amphialus excelled all the others in jumping, while at
       throwing the disc there was no one who could approach Elatreus.
@@ -3479,8 +3414,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       So he hurried up without even taking his cloak off, and seized a disc, larger,
       more massive and much heavier than those used by the Phaeacians when
-      disc-throwing among themselves.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-68"
-        id="linknoteref-68" class="pginternal"><sup>[68]</sup></a> Then, swinging it back, he threw it
+      disc-throwing among themselves.<a href="#footnote-4" id="linknoteref-68" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> Then, swinging it back, he threw it
       from his brawny hand, and it made a humming sound in the air as he did so. The
       Phaeacians quailed beneath the rushing of its flight as it sped gracefully from
       his hand, and flew beyond any mark that had been made yet. Minerva, in the form
@@ -3554,8 +3488,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       what they were about, told Vulcan. Vulcan was very angry when he heard such
       dreadful news, so he went to his smithy brooding mischief, got his great anvil
       into its place, and began to forge some chains which none could either unloose
-      or break, so that they might stay there in that place.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-69" id="linknoteref-69"
-        class="pginternal"><sup>[69]</sup></a> When he had finished his snare he
+      or break, so that they might stay there in that place.<a href="#footnote-5" id="linknoteref-69" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> When he had finished his snare he
       went into his bedroom and festooned the bed-posts all over with chains like
       cobwebs; he also let many hang down from the great beam of the ceiling. Not
       even a god could see them so fine and subtle were they. As soon as he had
@@ -3727,16 +3660,14 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       will thus better enjoy both his supper and the singing that will follow. I
       shall myself give him this golden goblet—which is of exquisite
       workmanship—that he may be reminded of me for the rest of his life
-      whenever he makes a drink offering to Jove, or to any of the gods.”<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-70" id="linknoteref-70"
-        class="pginternal"><sup>[70]</sup></a>
+      whenever he makes a drink offering to Jove, or to any of the gods.”<a href="#footnote-6" id="linknoteref-70" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
       Then Arete told her maids to set a large tripod upon the fire as fast as they
       could, whereon they set a tripod full of bath water on to a clear fire; they
       threw on sticks to make it blaze, and the water became hot as the flame played
-      about the belly of the tripod.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-71"
-        id="linknoteref-71" class="pginternal"><sup>[71]</sup></a> Meanwhile Arete brought a magnificent
+      about the belly of the tripod.<a href="#footnote-7" id="linknoteref-71" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a> Meanwhile Arete brought a magnificent
       chest from her own room, and inside it she packed all the beautiful presents of
       gold and raiment which the Phaeacians had brought. Lastly she added a cloak and
       a good shirt from Alcinous, and said to Ulysses:
@@ -3745,8 +3676,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       “See to the lid yourself, and have the whole bound round at once, for
       fear any one should rob you by the way when you are asleep in your ship.”
-      <a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-72" id="linknoteref-72"
-        class="pginternal"><sup>[72]</sup></a>
+      <a href="#footnote-8" id="linknoteref-72" class="pginternal"><sup>[8]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -3801,8 +3731,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       The bard inspired of heaven took up the story at the point where some of the
       Argives set fire to their tents and sailed away while others, hidden within the
-      horse,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-73" id="linknoteref-73"
-        class="pginternal"><sup>[73]</sup></a> were
+      horse,<a href="#footnote-9" id="linknoteref-73" class="pginternal"><sup>[9]</sup><span class="tooltip"></span></a> were
       waiting with Ulysses in the Trojan place of assembly. For the Trojans
       themselves had drawn the horse into their fortress, and it stood there while
       they sat in council round it, and were in three minds as to what they should
@@ -3861,8 +3790,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       Still I do remember hearing my father say that Neptune was angry with us for
       being too easy-going in the matter of giving people escorts. He said that one
       of these days he should wreck a ship of ours as it was returning from having
-      escorted some one,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-74"
-        id="linknoteref-74" class="pginternal"><sup>[74]</sup></a> and bury our city under a high
+      escorted some one,<a href="#footnote-10" id="linknoteref-74" class="pginternal"><sup>[10]</sup><span class="tooltip"></span></a> and bury our city under a high
       mountain. This is what my father used to say, but whether the god will carry
       out his threat or no is a matter which he will decide for himself.
     </p>
@@ -3904,8 +3832,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       and not far from it there is a group of islands very near to one
       another—Dulichium, Same, and the wooded island of Zacynthus. It lies
       squat on the horizon, all highest up in the sea towards the sunset, while the
-      others lie away from it towards dawn.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-75" id="linknoteref-75"
-        class="pginternal"><sup>[75]</sup></a> It is a rugged island, but it breeds
+      others lie away from it towards dawn.<a href="#footnote-1" id="linknoteref-75" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> It is a rugged island, but it breeds
       brave men, and my eyes know none that they better love to look upon. The
       goddess Calypso kept me with her in her cave, and wanted me to marry her, as
       did also the cunning Aeaean goddess Circe; but they could neither of them
@@ -3929,8 +3856,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       foot as the occasion served; in the morning, therefore, they came as thick as
       leaves and bloom in summer, and the hand of heaven was against us, so that we
       were hard pressed. They set the battle in array near the ships, and the hosts
-      aimed their bronze-shod spears at one another.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-76" id="linknoteref-76"
-        class="pginternal"><sup>[76]</sup></a> So long as the day waxed and it was
+      aimed their bronze-shod spears at one another.<a href="#footnote-2" id="linknoteref-76" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> So long as the day waxed and it was
       still morning, we held our own against them, though they were more in number
       than we; but as the sun went down, towards the time when men loose their oxen,
       the Cicons got the better of us, and we lost half a dozen men from every ship
@@ -3964,8 +3890,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       once, and went about among the Lotus-eaters, who did them no hurt, but gave
       them to eat of the lotus, which was so delicious that those who ate of it left
       off caring about home, and did not even want to go back and say what had
-      happened to them, but were for staying and munching lotus<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-77" id="linknoteref-77"
-        class="pginternal"><sup>[77]</sup></a> with the Lotus-eaters without
+      happened to them, but were for staying and munching lotus<a href="#footnote-3" id="linknoteref-77" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> with the Lotus-eaters without
       thinking further of their return; nevertheless, though they wept bitterly I
       forced them back to the ships and made them fast under the benches. Then I told
       the rest to go on board at once, lest any of them should taste of the lotus and
@@ -3994,8 +3919,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       ships, nor yet shipwrights who could make ships for them; they cannot therefore
       go from city to city, or sail over the sea to one another’s country as
       people who have ships can do; if they had had these they would have colonised
-      the island,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-78" id="linknoteref-78"
-        class="pginternal"><sup>[78]</sup></a> for
+      the island,<a href="#footnote-4" id="linknoteref-78" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> for
       it is a very good one, and would yield everything in due season. There are
       meadows that in some places come right down to the sea shore, well watered and
       full of luscious grass; grapes would do there excellently; there is level land
@@ -4010,8 +3934,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       “Here we entered, but so dark was the night that some god must have
       brought us in, for there was nothing whatever to be seen. A thick mist hung all
-      round our ships;<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-79"
-        id="linknoteref-79" class="pginternal"><sup>[79]</sup></a> the moon was hidden behind a mass of
+      round our ships;<a href="#footnote-5" id="linknoteref-79" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> the moon was hidden behind a mass of
       clouds so that no one could have seen the island if he had looked for it, nor
       were there any breakers to tell us we were close in shore before we found
       ourselves upon the land itself; when, however, we had beached the ships, we
@@ -4077,8 +4000,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       and took stock of all that we could see. His cheese-racks were loaded with
       cheeses, and he had more lambs and kids than his pens could hold. They were
       kept in separate flocks; first there were the hoggets, then the oldest of the
-      younger lambs and lastly the very young ones<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-80" id="linknoteref-80"
-        class="pginternal"><sup>[80]</sup></a> all kept apart from one another; as
+      younger lambs and lastly the very young ones<a href="#footnote-6" id="linknoteref-80" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a> all kept apart from one another; as
       for his dairy, all the vessels, bowls, and milk pails into which he milked,
       were swimming with whey. When they saw all this, my men begged me to let them
       first steal some cheeses, and make off with them to the ship; they would then
@@ -4344,8 +4266,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       “He got more and more furious as he heard me, so he tore the top from off
       a high mountain, and flung it just in front of my ship so that it was within a
-      little of hitting the end of the rudder.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-81" id="linknoteref-81"
-        class="pginternal"><sup>[81]</sup></a> The sea quaked as the rock fell into
+      little of hitting the end of the rudder.<a href="#footnote-7" id="linknoteref-81" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a> The sea quaked as the rock fell into
       it, and the wash of the wave it raised carried us back towards the mainland,
       and forced us towards the shore. But I snatched up a long pole and kept the
       ship off, making signs to my men by nodding my head, that they must row for
@@ -4397,8 +4318,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       son, grant that Ulysses may never reach his home alive; or if he must get back
       to his friends at last, let him do so late and in sore plight after losing all
       his men [let him reach his home in another man’s ship and find trouble in
-      his house.’<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-82" id="linknoteref-82"
-        class="pginternal"><sup>[82]</sup></a>
+      his house.’<a href="#footnote-8" id="linknoteref-82" class="pginternal"><sup>[8]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -4434,8 +4354,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
     ', '<p>
       “Thence we went on to the Aeolian island where lives Aeolus son of
       Hippotas, dear to the immortal gods. It is an island that floats (as it were)
-      upon the sea,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-83"
-        id="linknoteref-83" class="pginternal"><sup>[83]</sup></a>
+      upon the sea,<a href="#footnote-1" id="linknoteref-83" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a>
       iron bound with a wall that girds it. Now, Aeolus has six daughters and six
       lusty sons, so he made the sons marry the daughters, and they all live with
       their dear father and mother, feasting and enjoying every conceivable kind of
@@ -4516,8 +4435,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       is driving out his flock [to feed] and this last answers the salute. In that
       country a man who could do without sleep might earn double wages, one as a
       herdsman of cattle, and another as a shepherd, for they work much the same by
-      night as they do by day.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-84"
-        id="linknoteref-84" class="pginternal"><sup>[84]</sup></a>
+      night as they do by day.<a href="#footnote-2" id="linknoteref-84" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -4605,8 +4523,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       dark, we camped upon the sea shore. When the child of morning, rosy-fingered
       Dawn, appeared, I called a council and said, ‘My friends, we are in very
       great difficulties; listen therefore to me. We have no idea where the sun
-      either sets or rises,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-85"
-        id="linknoteref-85" class="pginternal"><sup>[85]</sup></a> so that we do not even know East from
+      either sets or rises,<a href="#footnote-3" id="linknoteref-85" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> so that we do not even know East from
       West. I see no way out of it; nevertheless, we must try and find one. We are
       certainly on an island, for I went as high as I could this morning, and saw the
       sea reaching all round it to the horizon; it lies low, but towards the middle I
@@ -4629,8 +4546,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       wild mountain wolves and lions prowling all round it—poor bewitched
       creatures whom she had tamed by her enchantments and drugged into subjection.
       They did not attack my men, but wagged their great tails, fawned upon them, and
-      rubbed their noses lovingly against them.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-86" id="linknoteref-86"
-        class="pginternal"><sup>[86]</sup></a> As hounds crowd round their master
+      rubbed their noses lovingly against them.<a href="#footnote-4" id="linknoteref-86" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> As hounds crowd round their master
       when they see him coming from dinner—for they know he will bring them
       something—even so did these wolves and lions with their great claws fawn
       upon my men, but the men were terribly frightened at seeing such strange
@@ -4778,8 +4694,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       seats, and set them with baskets of gold. A third mixed some sweet wine with
       water in a silver bowl and put golden cups upon the tables, while the fourth
       brought in water and set it to boil in a large cauldron over a good fire which
-      she had lighted. When the water in the cauldron was boiling,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-87" id="linknoteref-87"
-        class="pginternal"><sup>[87]</sup></a> she poured cold
+      she had lighted. When the water in the cauldron was boiling,<a href="#footnote-5" id="linknoteref-87" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> she poured cold
       into it till it was just as I liked it, and then she set me in a bath and began
       washing me from the cauldron about the head and shoulders, to take the tire and
       stiffness out of my limbs. As soon as she had done washing me and anointing me
@@ -5024,8 +4939,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       black sheep to himself, the best in all my flocks. When I had prayed
       sufficiently to the dead, I cut the throats of the two sheep and let the blood
       run into the trench, whereon the ghosts came trooping up from
-      Erebus—brides,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-89"
-        id="linknoteref-89" class="pginternal"><sup>[89]</sup></a> young bachelors, old men worn out
+      Erebus—brides,<a href="#footnote-1" id="linknoteref-89" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> young bachelors, old men worn out
       with toil, maids who had been crossed in love, and brave men who had been
       killed in battle, with their armour still smirched with blood; they came from
       every quarter and flitted round the trench with a strange kind of screaming
@@ -5113,13 +5027,11 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       a ship. I will give you this certain token which cannot escape your notice. A
       wayfarer will meet you and will say it must be a winnowing shovel that you have
       got upon your shoulder; on this you must fix the oar in the ground and
-      sacrifice a ram, a bull, and a boar to Neptune.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-90" id="linknoteref-90"
-        class="pginternal"><sup>[90]</sup></a> Then go home and offer hecatombs to
+      sacrifice a ram, a bull, and a boar to Neptune.<a href="#footnote-2" id="linknoteref-90" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> Then go home and offer hecatombs to
       all the gods in heaven one after the other. As for yourself, death shall come
       to you from the sea, and your life shall ebb away very gently when you are full
       of years and peace of mind, and your people shall bless you. All that I have
-      said will come true].’<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-91"
-        id="linknoteref-91" class="pginternal"><sup>[91]</sup></a>
+      said will come true].’<a href="#footnote-3" id="linknoteref-91" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -5168,8 +5080,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       she is in great distress of mind and spends her whole time in tears both night
       and day. No one as yet has got possession of your fine property, and Telemachus
       still holds your lands undisturbed. He has to entertain largely, as of course
-      he must, considering his position as a magistrate,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-92" id="linknoteref-92"
-        class="pginternal"><sup>[92]</sup></a> and how every one invites him; your
+      he must, considering his position as a magistrate,<a href="#footnote-4" id="linknoteref-92" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> and how every one invites him; your
       father remains at his old place in the country and never goes near the town. He
       has no comfortable bed nor bedding; in the winter he sleeps on the floor in
       front of the fire with the men and goes about all in rags, but in summer, when
@@ -5180,8 +5091,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       own house, nor was I attacked by any illness such as those that generally wear
       people out and kill them, but my longing to know what you were doing and the
       force of my affection for you—this it was that was the death of
-      me.’<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-93" id="linknoteref-93"
-        class="pginternal"><sup>[93]</sup></a>
+      me.’<a href="#footnote-5" id="linknoteref-93" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -5216,8 +5126,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       “The first I saw was Tyro. She was daughter of Salmoneus and wife of
-      Cretheus the son of Aeolus.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-94"
-        id="linknoteref-94" class="pginternal"><sup>[94]</sup></a> She fell in love with the river
+      Cretheus the son of Aeolus.<a href="#footnote-6" id="linknoteref-94" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a> She fell in love with the river
       Enipeus who is much the most beautiful river in the whole world. Once when she
       was taking a walk by his side as usual, Neptune, disguised as her lover, lay
       with her at the mouth of the river, and a huge blue wave arched itself like a
@@ -5269,8 +5178,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       Pero, who was wooed by all the country round; but Neleus would only give her to
       him who should raid the cattle of Iphicles from the grazing grounds of Phylace,
       and this was a hard task. The only man who would undertake to raid them was a
-      certain excellent seer,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-95"
-        id="linknoteref-95" class="pginternal"><sup>[95]</sup></a> but the will of heaven was against
+      certain excellent seer,<a href="#footnote-7" id="linknoteref-95" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a> but the will of heaven was against
       him, for the rangers of the cattle caught him and put him in prison;
       nevertheless when a full year had passed and the same season came round again,
       Iphicles set him at liberty, after he had expounded all the oracles of heaven.
@@ -5422,8 +5330,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       the rest. Not that your wife, Ulysses, is likely to murder you, for Penelope is
       a very admirable woman, and has an excellent nature. We left her a young bride
       with an infant at her breast when we set out for Troy. This child no doubt is
-      now grown up happily to man’s estate,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-96" id="linknoteref-96"
-        class="pginternal"><sup>[96]</sup></a> and he and his father will have a
+      now grown up happily to man’s estate,<a href="#footnote-8" id="linknoteref-96" class="pginternal"><sup>[8]</sup><span class="tooltip"></span></a> and he and his father will have a
       joyful meeting and embrace one another as it is right they should do, whereas
       my wicked wife did not even allow me the happiness of looking upon my son, but
       killed me ere I could do so. Furthermore I say—and lay my saying to your
@@ -5530,8 +5437,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       “He would not answer, but turned away to Erebus and to the other ghosts;
       nevertheless, I should have made him talk to me in spite of his being so angry,
-      or I should have gone on talking to him,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-97" id="linknoteref-97"
-        class="pginternal"><sup>[97]</sup></a> only that there were still others
+      or I should have gone on talking to him,<a href="#footnote-9" id="linknoteref-97" class="pginternal"><sup>[9]</sup><span class="tooltip"></span></a> only that there were still others
       among the dead whom I desired to see.
     </p>
 
@@ -5570,8 +5476,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       “And I saw Sisyphus at his endless task raising his prodigious stone with
       both his hands. With hands and feet he tried to roll it up to the top of the
       hill, but always, just before he could roll it over on to the other side, its
-      weight would be too much for him, and the pitiless stone<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-98" id="linknoteref-98"
-        class="pginternal"><sup>[98]</sup></a> would come thundering down again on
+      weight would be too much for him, and the pitiless stone<a href="#footnote-10" id="linknoteref-98" class="pginternal"><sup>[10]</sup><span class="tooltip"></span></a> would come thundering down again on
       to the plain. Then he would begin trying to push it up hill again, and the
       sweat ran off him and the steam rose after him.
     </p>
@@ -5658,8 +5563,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       bones lying all around, with the flesh still rotting off them. Therefore pass
       these Sirens by, and stop your men’s ears with wax that none of them may
       hear; but if you like you can listen yourself, for you may get the men to bind
-      you as you stand upright on a cross piece half way up the mast,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-99" id="linknoteref-99"
-        class="pginternal"><sup>[99]</sup></a> and they must
+      you as you stand upright on a cross piece half way up the mast,<a href="#footnote-1" id="linknoteref-99" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> and they must
       lash the rope’s ends to the mast itself, that you may have the pleasure
       of listening. If you beg and pray the men to unloose you, then they must bind
       you faster.
@@ -5667,8 +5571,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       “‘When your crew have taken you past these Sirens, I cannot give
-      you coherent directions<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-100"
-        id="linknoteref-100" class="pginternal"><sup>[100]</sup></a> as to which of two courses you are
+      you coherent directions<a href="#footnote-2" id="linknoteref-100" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> as to which of two courses you are
       to take; I will lay the two alternatives before you, and you must consider them
       for yourself. On the one hand there are some overhanging rocks against which
       the deep blue waves of Amphitrite beat with terrific fury; the blessed gods
@@ -5707,8 +5610,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       “‘You will find the other rock lie lower, but they are so close
       together that there is not more than a bow-shot between them. [A large fig tree
-      in full leaf<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-101"
-        id="linknoteref-101" class="pginternal"><sup>[101]</sup></a>
+      in full leaf<a href="#footnote-3" id="linknoteref-101" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a>
       grows upon it], and under it lies the sucking whirlpool of Charybdis. Three
       times in the day does she vomit forth her waters, and three times she sucks
       them down again; see that you be not there when she is sucking, for if you are,
@@ -5776,8 +5678,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       “I had hardly finished telling everything to the men before we reached
-      the island of the two Sirens,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-102"
-        id="linknoteref-102" class="pginternal"><sup>[102]</sup></a> for the wind had been very
+      the island of the two Sirens,<a href="#footnote-4" id="linknoteref-102" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> for the wind had been very
       favourable. Then all of a sudden it fell dead calm; there was not a breath of
       wind nor a ripple upon the water, so the men furled the sails and stowed them;
       then taking to their oars they whitened the water with the foam they raised in
@@ -5811,8 +5712,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       “Immediately after we had got past the island I saw a great wave from
       which spray was rising, and I heard a loud roaring sound. The men were so
       frightened that they loosed hold of their oars, for the whole sea resounded
-      with the rushing of the waters,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-103"
-        id="linknoteref-103" class="pginternal"><sup>[103]</sup></a> but the ship stayed where it was,
+      with the rushing of the waters,<a href="#footnote-5" id="linknoteref-103" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> but the ship stayed where it was,
       for the men had left off rowing. I went round, therefore, and exhorted them man
       by man not to lose heart.
     </p>
@@ -5854,8 +5754,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       in a moment I saw their hands and feet ever so high above me, struggling in the
       air as Scylla was carrying them off, and I heard them call out my name in one
       last despairing cry. As a fisherman, seated, spear in hand, upon some jutting
-      rock<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-104" id="linknoteref-104"
-        class="pginternal"><sup>[104]</sup></a> throws
+      rock<a href="#footnote-6" id="linknoteref-104" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a> throws
       bait into the water to deceive the poor little fishes, and spears them with the
       ox’s horn with which his spear is shod, throwing them gasping on to the
       land as he catches them one by one—even so did Scylla land these panting
@@ -5929,8 +5828,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       “For a whole month the wind blew steadily from the South, and there was
-      no other wind, but only South and East.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-105" id="linknoteref-105"
-        class="pginternal"><sup>[105]</sup></a> As long as corn and wine held out
+      no other wind, but only South and East.<a href="#footnote-7" id="linknoteref-105" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a> As long as corn and wine held out
       the men did not touch the cattle when they were hungry; when, however, they had
       eaten all there was in the ship, they were forced to go further afield, with
       hook and line, catching birds, and taking whatever they could lay their hands
@@ -6042,8 +5940,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       the South again, which frightened me lest I should be taken back to the
       terrible whirlpool of Charybdis. This indeed was what actually happened, for I
       was borne along by the waves all night, and by sunrise had reached the rock of
-      Scylla, and the whirlpool. She was then sucking down the salt sea water,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-106" id="linknoteref-106"
-        class="pginternal"><sup>[106]</sup></a> but I was
+      Scylla, and the whirlpool. She was then sucking down the salt sea water,<a href="#footnote-8" id="linknoteref-106" class="pginternal"><sup>[8]</sup><span class="tooltip"></span></a> but I was
       carried aloft toward the fig tree, which I caught hold of and clung on to like
       a bat. I could not plant my feet anywhere so as to stand securely, for the
       roots were a long way off and the boughs that overshadowed the whole pool were
@@ -6055,8 +5952,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       go with my hands and feet, and fell heavily into the sea, hard by my raft on to
       which I then got, and began to row with my hands. As for Scylla, the father of
       gods and men would not let her get further sight of me—otherwise I should
-      have certainly been lost.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-107"
-        id="linknoteref-107" class="pginternal"><sup>[107]</sup></a>
+      have certainly been lost.<a href="#footnote-9" id="linknoteref-107" class="pginternal"><sup>[9]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -6079,8 +5975,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       doubt not you will get home without further misadventure no matter how much you
       have suffered in the past. To you others, however, who come here night after
       night to drink my choicest wine and listen to my bard, I would insist as
-      follows. Our guest has already packed up the clothes, wrought gold,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-108" id="linknoteref-108"
-        class="pginternal"><sup>[108]</sup></a> and other
+      follows. Our guest has already packed up the clothes, wrought gold,<a href="#footnote-1" id="linknoteref-108" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> and other
       valuables which you have brought for his acceptance; let us now, therefore,
       present him further, each one of us, with a large tripod and a cauldron. We
       will recoup ourselves by the levy of a general rate; for private individuals
@@ -6109,10 +6004,8 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       “Sir, and all of you, farewell. Make your drink-offerings and send me on
       my way rejoicing, for you have fulfilled my heart’s desire by giving me
       an escort, and making me presents, which heaven grant that I may turn to good
-      account; may I find my admirable wife living in peace among friends,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-109" id="linknoteref-109"
-        class="pginternal"><sup>[109]</sup></a> and may you
-      whom I leave behind me give satisfaction to your wives and children;<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-110" id="linknoteref-110"
-        class="pginternal"><sup>[110]</sup></a> may heaven
+      account; may I find my admirable wife living in peace among friends,<a href="#footnote-2" id="linknoteref-109" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> and may you
+      whom I leave behind me give satisfaction to your wives and children;<a href="#footnote-3" id="linknoteref-110" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> may heaven
       vouchsafe you every good grace, and may no evil thing come among your
       people.”
     </p>
@@ -6148,8 +6041,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       in the stern of the ship. Then he too went on board and lay down without a
       word, but the crew took every man his place and loosed the hawser from the
       pierced stone to which it had been bound. Thereon, when they began rowing out
-      to sea, Ulysses fell into a deep, sweet, and almost deathlike slumber.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-111" id="linknoteref-111"
-        class="pginternal"><sup>[111]</sup></a>
+      to sea, Ulysses fell into a deep, sweet, and almost deathlike slumber.<a href="#footnote-4" id="linknoteref-111" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -6165,15 +6057,13 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       When the bright star that heralds the approach of dawn began to show, the ship
-      drew near to land.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-112"
-        id="linknoteref-112" class="pginternal"><sup>[112]</sup></a> Now there is in Ithaca a haven of
+      drew near to land.<a href="#footnote-5" id="linknoteref-112" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> Now there is in Ithaca a haven of
       the old merman Phorcys, which lies between two points that break the line of
       the sea and shut the harbour in. These shelter it from the storms of wind and
       sea that rage outside, so that, when once within it, a ship may lie without
       being even moored. At the head of this harbour there is a large olive tree, and
       at no great distance a fine overarching cavern sacred to the nymphs who are
-      called Naiads.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-113"
-        id="linknoteref-113" class="pginternal"><sup>[113]</sup></a> There are mixing bowls within it
+      called Naiads.<a href="#footnote-6" id="linknoteref-113" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a> There are mixing bowls within it
       and wine-jars of stone, and the bees hive there. Moreover, there are great
       looms of stone on which the nymphs weave their robes of sea purple—very
       curious to see—and at all times there is water within it. It has two
@@ -6183,17 +6073,14 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
     </p>
 
 <p>
-      Into this harbour, then, they took their ship, for they knew the place.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-114" id="linknoteref-114"
-        class="pginternal"><sup>[114]</sup></a> She had so
-      much way upon her that she ran half her own length on to the shore;<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-115" id="linknoteref-115"
-        class="pginternal"><sup>[115]</sup></a> when, however,
+      Into this harbour, then, they took their ship, for they knew the place.<a href="#footnote-7" id="linknoteref-114" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a> She had so
+      much way upon her that she ran half her own length on to the shore;<a href="#footnote-8" id="linknoteref-115" class="pginternal"><sup>[8]</sup><span class="tooltip"></span></a> when, however,
       they had landed, the first thing they did was to lift Ulysses with his rug and
       linen sheet out of the ship, and lay him down upon the sand still fast asleep.
       Then they took out the presents which Minerva had persuaded the Phaeacians to
       give him when he was setting out on his voyage homewards. They put these all
       together by the root of the olive tree, away from the road, for fear some
-      passer by<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-116" id="linknoteref-116"
-        class="pginternal"><sup>[116]</sup></a>
+      passer by<a href="#footnote-9" id="linknoteref-116" class="pginternal"><sup>[9]</sup><span class="tooltip"></span></a>
       might come and steal them before Ulysses awoke; and then they made the best of
       their way home again.
     </p>
@@ -6257,8 +6144,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       be angry with us for taking every one so safely over the sea, and would one day
       wreck a Phaeacian ship as it was returning from an escort, and bury our city
       under a high mountain. This was what my old father used to say, and now it is
-      all coming true.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-117"
-        id="linknoteref-117" class="pginternal"><sup>[117]</sup></a> Now therefore let us all do as I
+      all coming true.<a href="#footnote-10" id="linknoteref-117" class="pginternal"><sup>[10]</sup><span class="tooltip"></span></a> Now therefore let us all do as I
       say; in the first place we must leave off giving people escorts when they come
       here, and in the next let us sacrifice twelve picked bulls to Neptune that he
       may have mercy upon us, and not bury our city under the high mountain.”
@@ -6267,13 +6153,11 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       Thus did the chiefs and rulers of the Phaeacians pray to king Neptune, standing
-      round his altar; and at the same time<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-118" id="linknoteref-118"
-        class="pginternal"><sup>[118]</sup></a> Ulysses woke up once more upon his
+      round his altar; and at the same time<a href="#footnote-11" id="linknoteref-118" class="pginternal"><sup>[11]</sup><span class="tooltip"></span></a> Ulysses woke up once more upon his
       own soil. He had been so long away that he did not know it again; moreover,
       Jove’s daughter Minerva had made it a foggy day, so that people might not
       know of his having come, and that she might tell him everything without either
-      his wife or his fellow citizens and friends recognising him<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-119" id="linknoteref-119"
-        class="pginternal"><sup>[119]</sup></a> until he had
+      his wife or his fellow citizens and friends recognising him<a href="#footnote-12" id="linknoteref-119" class="pginternal"><sup>[12]</sup><span class="tooltip"></span></a> until he had
       taken his revenge upon the wicked suitors. Everything, therefore, seemed quite
       different to him—the long straight tracks, the harbours, the precipices,
       and the goodly trees, appeared all changed as he started up and looked upon his
@@ -6386,8 +6270,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       I saw no more of you, and cannot ever remember your coming to my ship to help
       me in a difficulty; I had to wander on sick and sorry till the gods delivered
       me from evil and I reached the city of the Phaeacians, where you encouraged me
-      and took me into the town.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-120"
-        id="linknoteref-120" class="pginternal"><sup>[120]</sup></a> And now, I beseech you in your
+      and took me into the town.<a href="#footnote-13" id="linknoteref-120" class="pginternal"><sup>[13]</sup><span class="tooltip"></span></a> And now, I beseech you in your
       father’s name, tell me the truth, for I do not believe I am really back
       in Ithaca. I am in some other country and you are mocking me and deceiving me
       in all you have been saying. Tell me then truly, have I really got back to my
@@ -6405,12 +6288,10 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       sheds on your behalf. As for my not coming near you, I was never uneasy about
       you, for I was certain you would get back safely though you would lose all your
       men, and I did not wish to quarrel with my uncle Neptune, who never forgave you
-      for having blinded his son.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-121"
-        id="linknoteref-121" class="pginternal"><sup>[121]</sup></a> I will now, however, point out to
+      for having blinded his son.<a href="#footnote-14" id="linknoteref-121" class="pginternal"><sup>[14]</sup><span class="tooltip"></span></a> I will now, however, point out to
       you the lie of the land, and you will then perhaps believe me. This is the
       haven of the old merman Phorcys, and here is the olive tree that grows at the
-      head of it; [near it is the cave sacred to the Naiads;<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-122" id="linknoteref-122"
-        class="pginternal"><sup>[122]</sup></a> here too is the overarching cavern
+      head of it; [near it is the cave sacred to the Naiads;<a href="#footnote-15" id="linknoteref-122" class="pginternal"><sup>[15]</sup><span class="tooltip"></span></a> here too is the overarching cavern
       in which you have offered many an acceptable hecatomb to the nymphs, and this
       is the wooded mountain Neritum.”
     </p>
@@ -6446,8 +6327,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       can lay hands on these disreputable people who have been lording it in your
       house these three years, courting your wife and making wedding presents to her,
       while she does nothing but lament your absence, giving hope and sending
-      encouraging messages<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-123"
-        id="linknoteref-123" class="pginternal"><sup>[123]</sup></a> to every one of them, but meaning
+      encouraging messages<a href="#footnote-16" id="linknoteref-123" class="pginternal"><sup>[16]</sup><span class="tooltip"></span></a> to every one of them, but meaning
       the very opposite of all she says.”
     </p>
 
@@ -6471,13 +6351,11 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       the suitors, of your wife, and of the son whom you left behind you. Then go at
       once to the swineherd who is in charge of your pigs; he has been always well
       affected towards you, and is devoted to Penelope and your son; you will find
-      him feeding his pigs near the rock that is called Raven<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-124" id="linknoteref-124"
-        class="pginternal"><sup>[124]</sup></a> by the fountain Arethusa, where
+      him feeding his pigs near the rock that is called Raven<a href="#footnote-17" id="linknoteref-124" class="pginternal"><sup>[17]</sup><span class="tooltip"></span></a> by the fountain Arethusa, where
       they are fattening on beechmast and spring water after their manner. Stay with
       him and find out how things are going, while I proceed to Sparta and see your
       son, who is with Menelaus at Lacedaemon, where he has gone to try and find out
-      whether you are still alive.”<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-125"
-        id="linknoteref-125" class="pginternal"><sup>[125]</sup></a>
+      whether you are still alive.”<a href="#footnote-18" id="linknoteref-125" class="pginternal"><sup>[18]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -6518,8 +6396,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       Minerva had said that he would find the swineherd, who was the most thrifty
       servant he had. He found him sitting in front of his hut, which was by the
       yards that he had built on a site which could be seen from far. He had made
-      them spacious<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-126"
-        id="linknoteref-126" class="pginternal"><sup>[126]</sup></a> and fair to see, with a free run
+      them spacious<a href="#footnote-1" id="linknoteref-126" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> and fair to see, with a free run
       for the pigs all round them; he had built them during his master’s
       absence, of stones which he had gathered out of the ground, without saying
       anything to Penelope or Laertes, and he had fenced them on top with thorn
@@ -6530,8 +6407,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       number, for the suitors kept on eating them, and the swineherd had to send them
       the best he had continually. There were three hundred and sixty boar pigs, and
       the herdsman’s four hounds, which were as fierce as wolves, slept always
-      with them. The swineherd was at that moment cutting out a pair of sandals<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-127" id="linknoteref-127"
-        class="pginternal"><sup>[127]</sup></a> from a good
+      with them. The swineherd was at that moment cutting out a pair of sandals<a href="#footnote-2" id="linknoteref-127" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> from a good
       stout ox hide. Three of his men were out herding the pigs in one place or
       another, and he had sent the fourth to town with a boar that he had been forced
       to send the suitors that they might sacrifice it and have their fill of meat.
@@ -7022,8 +6898,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       therefore, and put everything in charge of the most respectable woman servant
       that you have, until it shall please heaven to send you a wife of your own. Let
       me tell you also of another matter which you had better attend to. The chief
-      men among the suitors are lying in wait for you in the Strait<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-128" id="linknoteref-128"
-        class="pginternal"><sup>[128]</sup></a> between Ithaca
+      men among the suitors are lying in wait for you in the Strait<a href="#footnote-1" id="linknoteref-128" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> between Ithaca
       and Samos, and they mean to kill you before you can reach home. I do not much
       think they will succeed; it is more likely that some of those who are now
       eating up your property will find a grave themselves. Sail night and day, and
@@ -7038,8 +6913,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       Then she went back to Olympus; but Telemachus stirred Pisistratus with his heel
       to rouse him, and said, “Wake up Pisistratus, and yoke the horses to the
-      chariot, for we must set off home.”<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-129" id="linknoteref-129"
-        class="pginternal"><sup>[129]</sup></a>
+      chariot, for we must set off home.”<a href="#footnote-2" id="linknoteref-129" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -7087,15 +6961,13 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       sufficient dinner from what there might be in the house. At this moment
       Eteoneus joined him, for he lived close by and had just got up; so Menelaus
       told him to light the fire and cook some meat, which he at once did. Then
-      Menelaus went down into his fragrant store room,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-130" id="linknoteref-130"
-        class="pginternal"><sup>[130]</sup></a> not alone, but Helen went too, with
+      Menelaus went down into his fragrant store room,<a href="#footnote-3" id="linknoteref-130" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> not alone, but Helen went too, with
       Megapenthes. When he reached the place where the treasures of his house were
       kept, he selected a double cup, and told his son Megapenthes to bring also a
       silver mixing bowl. Meanwhile Helen went to the chest where she kept the lovely
       dresses which she had made with her own hands, and took out one that was
       largest and most beautifully enriched with embroidery; it glittered like a
-      star, and lay at the very bottom of the chest. <a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-131" id="linknoteref-131"
-        class="pginternal"><sup>[131]</sup></a> Then they all came back through the
+      star, and lay at the very bottom of the chest. <a href="#footnote-4" id="linknoteref-131" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> Then they all came back through the
       house again till they got to Telemachus, and Menelaus said, “Telemachus,
       may Jove, the mighty husband of Juno, bring you safely home according to your
       desire. I will now present you with the finest and most precious piece of plate
@@ -7283,8 +7155,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       Presently the sun set and darkness was over all the land. The vessel made a
       quick passage to Pheae and thence on to Elis, where the Epeans rule. Telemachus
-      then headed her for the flying islands,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-132" id="linknoteref-132"
-        class="pginternal"><sup>[132]</sup></a> wondering within himself whether he
+      then headed her for the flying islands,<a href="#footnote-5" id="linknoteref-132" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> wondering within himself whether he
       should escape death or should be taken prisoner.
     </p>
 
@@ -7342,8 +7213,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       is still living and prays heaven to let him depart peacefully in his own house,
       for he is terribly distressed about the absence of his son, and also about the
       death of his wife, which grieved him greatly and aged him more than anything
-      else did. She came to an unhappy end<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-133" id="linknoteref-133"
-        class="pginternal"><sup>[133]</sup></a> through sorrow for her son: may no
+      else did. She came to an unhappy end<a href="#footnote-6" id="linknoteref-133" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a> through sorrow for her son: may no
       friend or neighbour who has dealt kindly by me come to such an end as she did.
       As long as she was still living, though she was always grieving, I used to like
       seeing her and asking her how she did, for she brought me up along with her
@@ -7387,10 +7257,8 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       “You may have heard of an island called Syra that lies over above
-      Ortygia,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-134" id="linknoteref-134"
-        class="pginternal"><sup>[134]</sup></a>
-      where the land begins to turn round and look in another direction.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-135" id="linknoteref-135"
-        class="pginternal"><sup>[135]</sup></a> It is not very
+      Ortygia,<a href="#footnote-7" id="linknoteref-134" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a>
+      where the land begins to turn round and look in another direction.<a href="#footnote-8" id="linknoteref-135" class="pginternal"><sup>[8]</sup><span class="tooltip"></span></a> It is not very
       thickly peopled, but the soil is good, with much pasture fit for cattle and
       sheep, and it abounds with wine and wheat. Dearth never comes there, nor are
       the people plagued by any sickness, but when they grow old Apollo comes with
@@ -7475,16 +7343,14 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       Thus did they converse, and they had only a very little time left for sleep,
       for it was soon daybreak. In the mean time Telemachus and his crew were nearing
       land, so they loosed the sails, took down the mast, and rowed the ship into the
-      harbour.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-136" id="linknoteref-136"
-        class="pginternal"><sup>[136]</sup></a>
+      harbour.<a href="#footnote-9" id="linknoteref-136" class="pginternal"><sup>[9]</sup><span class="tooltip"></span></a>
       They cast out their mooring stones and made fast the hawsers; they then got out
       upon the sea shore, mixed their wine, and got dinner ready. As soon as they had
       had enough to eat and drink Telemachus said, “Take the ship on to the
       town, but leave me here, for I want to look after the herdsmen on one of my
       farms. In the evening, when I have seen all I want, I will come down to the
       city, and to-morrow morning in return for your trouble I will give you all a
-      good dinner with meat and wine.” <a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-137" id="linknoteref-137"
-        class="pginternal"><sup>[137]</sup></a>
+      good dinner with meat and wine.” <a href="#footnote-10" id="linknoteref-137" class="pginternal"><sup>[10]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -7510,8 +7376,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       As he was speaking a bird flew by upon his right hand—a hawk,
       Apollo’s messenger. It held a dove in its talons, and the feathers, as it
-      tore them off,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-138"
-        id="linknoteref-138" class="pginternal"><sup>[138]</sup></a> fell to the ground midway between
+      tore them off,<a href="#footnote-11" id="linknoteref-138" class="pginternal"><sup>[11]</sup><span class="tooltip"></span></a> fell to the ground midway between
       Telemachus and the ship. On this Theoclymenus called him apart and caught him
       by the hand. “Telemachus,” said he, “that bird did not fly on
       your right hand without having been sent there by some god. As soon as I saw it
@@ -7652,8 +7517,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       look for support, however great his quarrel may be? I wish I were as young as
       you are and in my present mind; if I were son to Ulysses, or, indeed, Ulysses
       himself, I would rather some one came and cut my head off, but I would go to
-      the house and be the bane of every one of these men.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-139" id="linknoteref-139"
-        class="pginternal"><sup>[139]</sup></a> If they were too many for
+      the house and be the bane of every one of these men.<a href="#footnote-1" id="linknoteref-139" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> If they were too many for
       me—I being single-handed—I would rather die fighting in my own
       house than see such disgraceful sights day after day, strangers grossly
       maltreated, and men dragging the women servants about the house in an unseemly
@@ -8177,8 +8041,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       with spears at a mark on the levelled ground in front of the house, and
       behaving with all their old insolence. But when it was now time for dinner, and
       the flock of sheep and goats had come into the town from all the country round,
-      <a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-140" id="linknoteref-140"
-        class="pginternal"><sup>[140]</sup></a> with their
+      <a href="#footnote-1" id="linknoteref-140" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> with their
       shepherds as usual, then Medon, who was their favourite servant, and who waited
       upon them at table, said, “Now then, my young masters, you have had
       enough sport, so come inside that we may get dinner ready. Dinner is not a bad
@@ -8188,8 +8051,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       They left their sports as he told them, and when they were within the house,
       they laid their cloaks on the benches and seats inside, and then sacrificed
-      some sheep, goats, pigs, and a heifer, all of them fat and well grown.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-141" id="linknoteref-141"
-        class="pginternal"><sup>[141]</sup></a> Thus they made
+      some sheep, goats, pigs, and a heifer, all of them fat and well grown.<a href="#footnote-2" id="linknoteref-141" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> Thus they made
       ready for their meal. In the meantime Ulysses and the swineherd were about
       starting for the town, and the swineherd said, “Stranger, I suppose you
       still want to go to town to-day, as my master said you were to do; for my own
@@ -8197,8 +8059,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       my master tells me, or he will scold me later on, and a scolding from
       one’s master is a very serious thing. Let us then be off, for it is now
       broad day; it will be night again directly and then you will find it
-      colder.”<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-142" id="linknoteref-142"
-        class="pginternal"><sup>[142]</sup></a>
+      colder.”<a href="#footnote-3" id="linknoteref-142" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -8217,8 +8078,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       were nearing the city, they reached the fountain from which the citizens drew
       their water. This had been made by Ithacus, Neritus, and Polyctor. There was a
       grove of water-loving poplars planted in a circle all round it, and the clear
-      cold water came down to it from a rock high up,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-143" id="linknoteref-143"
-        class="pginternal"><sup>[143]</sup></a> while above the fountain there was
+      cold water came down to it from a rock high up,<a href="#footnote-4" id="linknoteref-143" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> while above the fountain there was
       an altar to the nymphs, at which all wayfarers used to sacrifice. Here
       Melanthius son of Dolius overtook them as he was driving down some goats, the
       best in his flock, for the suitors’ dinner, and there were two shepherds
@@ -8232,8 +8092,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       swineherd, are you taking this poor miserable object? It would make any one
       sick to see such a creature at table. A fellow like this never won a prize for
       anything in his life, but will go about rubbing his shoulders against every
-      man’s door post, and begging, not for swords and cauldrons<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-144" id="linknoteref-144"
-        class="pginternal"><sup>[144]</sup></a> like a man,
+      man’s door post, and begging, not for swords and cauldrons<a href="#footnote-5" id="linknoteref-144" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> like a man,
       but only for a few scraps not worth begging for. If you would give him to me
       for a hand on my station, he might do to clean out the folds, or bring a bit of
       sweet feed to the kids, and he could fatten his thighs as much as he pleased on
@@ -8472,8 +8331,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       Then Antinous said, “What god can have sent such a pestilence to plague
-      us during our dinner? Get out, into the open part of the court,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-145" id="linknoteref-145"
-        class="pginternal"><sup>[145]</sup></a> or I will give
+      us during our dinner? Get out, into the open part of the court,<a href="#footnote-6" id="linknoteref-145" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a> or I will give
       you Egypt and Cyprus over again for your insolence and importunity; you have
       begged of all the others, and they have given you lavishly, for they have
       abundance round them, and it is easy to be free with other people’s
@@ -8520,8 +8378,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       “Antinous, you did ill in striking that poor wretch of a tramp: it will
       be worse for you if he should turn out to be some god—and we know the
       gods go about disguised in all sorts of ways as people from foreign countries,
-      and travel about the world to see who do amiss and who righteously.”<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-146" id="linknoteref-146"
-        class="pginternal"><sup>[146]</sup></a>
+      and travel about the world to see who do amiss and who righteously.”<a href="#footnote-7" id="linknoteref-146" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -8535,8 +8392,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       banqueting-cloister, she said before her maids, “Would that Apollo would
       so strike you, Antinous,” and her waiting woman Eurynome answered,
       “If our prayers were answered not one of the suitors would ever again see
-      the sun rise.” Then Penelope said, “Nurse,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-147" id="linknoteref-147"
-        class="pginternal"><sup>[147]</sup></a> I hate every single one of them,
+      the sun rise.” Then Penelope said, “Nurse,<a href="#footnote-8" id="linknoteref-147" class="pginternal"><sup>[8]</sup><span class="tooltip"></span></a> I hate every single one of them,
       for they mean nothing but mischief, but I hate Antinous like the darkness of
       death itself. A poor unfortunate tramp has come begging about the house for
       sheer want. Every one else has given him something to put in his wallet, but
@@ -8662,8 +8518,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       of Ithaca, and was notorious as an incorrigible glutton and drunkard. This man
       had no strength nor stay in him, but he was a great hulking fellow to look at;
       his real name, the one his mother gave him, was Arnaeus, but the young men of
-      the place called him Irus,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-148"
-        id="linknoteref-148" class="pginternal"><sup>[148]</sup></a> because he used to run errands for
+      the place called him Irus,<a href="#footnote-1" id="linknoteref-148" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> because he used to run errands for
       any one who would send him. As soon as he came he began to insult Ulysses, and
       to try and drive him out of his own house.
     </p>
@@ -8696,8 +8551,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       Thus roundly did they rate one another on the smooth pavement in front of the
-      doorway,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-149" id="linknoteref-149"
-        class="pginternal"><sup>[149]</sup></a> and
+      doorway,<a href="#footnote-2" id="linknoteref-149" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> and
       when Antinous saw what was going on he laughed heartily and said to the others,
       “This is the finest sport that you ever saw; heaven never yet sent
       anything like it into this house. The stranger and Irus have quarreled and are
@@ -8846,8 +8700,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
     </p>
 
 <p>
-      On this the old woman<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-150"
-        id="linknoteref-150" class="pginternal"><sup>[150]</sup></a> went out of the room to bid the
+      On this the old woman<a href="#footnote-3" id="linknoteref-150" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> went out of the room to bid the
       maids go to their mistress. In the meantime Minerva bethought her of another
       matter, and sent Penelope off into a sweet slumber; so she lay down on her
       couch and her limbs became heavy with sleep. Then the goddess shed grace and
@@ -8968,8 +8821,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       Then the queen went back to her room upstairs, and her maids brought the
       presents after her. Meanwhile the suitors took to singing and dancing, and
       stayed till evening came. They danced and sang till it grew dark; they then
-      brought in three braziers<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-151"
-        id="linknoteref-151" class="pginternal"><sup>[151]</sup></a> to give light, and piled them up
+      brought in three braziers<a href="#footnote-4" id="linknoteref-151" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> to give light, and piled them up
       with chopped firewood very old and dry, and they lit torches from them, which
       the maids held up turn and turn about. Then Ulysses said:
     </p>
@@ -9267,8 +9119,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       people speak many different languages which overlap one another, for there are
       Achaeans, brave Eteocretans, Dorians of three-fold race, and noble Pelasgi.
       There is a great town there, Cnossus, where Minos reigned who every nine years
-      had a conference with Jove himself.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-152" id="linknoteref-152"
-        class="pginternal"><sup>[152]</sup></a> Minos was father to Deucalion,
+      had a conference with Jove himself.<a href="#footnote-1" id="linknoteref-152" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> Minos was father to Deucalion,
       whose son I am, for Deucalion had two sons Idomeneus and myself. Idomeneus
       sailed for Troy, and I, who am the younger, am called Aethon; my brother,
       however, was at once the older and the more valiant of the two; hence it was in
@@ -9312,8 +9163,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       dog holding a spotted fawn between his fore paws, and watching it as it lay
       panting upon the ground. Every one marvelled at the way in which these things
       had been done in gold, the dog looking at the fawn, and strangling it, while
-      the fawn was struggling convulsively to escape.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-153" id="linknoteref-153"
-        class="pginternal"><sup>[153]</sup></a> As for the shirt that he wore next
+      the fawn was struggling convulsively to escape.<a href="#footnote-2" id="linknoteref-153" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> As for the shirt that he wore next
       his skin, it was so soft that it fitted him like the skin of an onion, and
       glistened in the sunlight to the admiration of all the women who beheld it.
       Furthermore I say, and lay my saying to your heart, that I do not know whether
@@ -9324,8 +9174,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       bronze and a beautiful purple mantle, double lined, with a shirt that went down
       to his feet, and I sent him on board his ship with every mark of honour. He had
       a servant with him, a little older than himself, and I can tell you what he was
-      like; his shoulders were hunched,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-154" id="linknoteref-154"
-        class="pginternal"><sup>[154]</sup></a> he was dark, and he had thick curly
+      like; his shoulders were hunched,<a href="#footnote-3" id="linknoteref-154" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> he was dark, and he had thick curly
       hair. His name was Eurybates, and Ulysses treated him with greater familiarity
       than he did any of the others, as being the most like-minded with
       himself.”
@@ -9583,8 +9432,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       but now that he is full grown he begs and prays me to do so, being incensed at
       the way in which the suitors are eating up his property. Listen, then, to a
       dream that I have had and interpret it for me if you can. I have twenty geese
-      about the house that eat mash out of a trough,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-155" id="linknoteref-155"
-        class="pginternal"><sup>[155]</sup></a> and of which I am exceedingly fond.
+      about the house that eat mash out of a trough,<a href="#footnote-4" id="linknoteref-155" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> and of which I am exceedingly fond.
       I dreamed that a great eagle came swooping down from a mountain, and dug his
       curved beak into the neck of each of them till he had killed them all.
       Presently he soared off into the sky, and left them lying dead about the yard;
@@ -9654,8 +9502,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
     ', '<p>
       Ulysses slept in the cloister upon an undressed bullock’s hide, on the
       top of which he threw several skins of the sheep the suitors had eaten, and
-      Eurynome<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-156" id="linknoteref-156"
-        class="pginternal"><sup>[156]</sup></a>
+      Eurynome<a href="#footnote-1" id="linknoteref-156" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a>
       threw a cloak over him after he had laid himself down. There, then, Ulysses lay
       wakefully brooding upon the way in which he should kill the suitors; and by and
       by, the women who had been in the habit of misconducting themselves with them,
@@ -9791,8 +9638,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       him, but he said he was such a wretched outcast that he would not sleep on a
       bed and under blankets; he insisted on having an undressed bullock’s hide
       and some sheepskins put for him in the cloister and I threw a cloak over him
-      myself.”<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-157" id="linknoteref-157"
-        class="pginternal"><sup>[157]</sup></a>
+      myself.”<a href="#footnote-2" id="linknoteref-157" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -9906,8 +9752,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       Telemachus purposely made Ulysses sit in the part of the cloister that was
-      paved with stone;<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-158"
-        id="linknoteref-158" class="pginternal"><sup>[158]</sup></a> he gave him a shabby looking seat
+      paved with stone;<a href="#footnote-3" id="linknoteref-158" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> he gave him a shabby looking seat
       at a little table to himself, and had his portion of the inward meats brought
       to him, with his wine in a gold cup. “Sit there,” said he,
       “and drink your wine among the great people. I will put a stop to the
@@ -9951,8 +9796,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       As he spoke he picked up a heifer’s foot from the meat-basket in which it
       lay, and threw it at Ulysses, but Ulysses turned his head a little aside, and
-      avoided it, smiling grimly Sardinian fashion<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-159" id="linknoteref-159"
-        class="pginternal"><sup>[159]</sup></a> as he did so, and it hit the wall,
+      avoided it, smiling grimly Sardinian fashion<a href="#footnote-4" id="linknoteref-159" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> as he did so, and it hit the wall,
       not him. On this Telemachus spoke fiercely to Ctesippus, “It is a good
       thing for you,” said he, “that the stranger turned his head so that
       you missed him. If you had hit him I should have run you through with my spear,
@@ -9975,8 +9819,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       word to Telemachus and his mother, which I trust may commend itself to both.
       ‘As long,’ I would say, ‘as you had ground for hoping that
       Ulysses would one day come home, no one could complain of your waiting and
-      suffering<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-160" id="linknoteref-160"
-        class="pginternal"><sup>[160]</sup></a>
+      suffering<a href="#footnote-5" id="linknoteref-160" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a>
       the suitors to be in your house. It would have been better that he should have
       returned, but it is now sufficiently clear that he will never do so; therefore
       talk all this quietly over with your mother, and tell her to marry the best
@@ -10089,8 +9932,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       had planed this duly, and had drawn a line on it so as to get it quite
       straight; he had then set the door posts into it and hung the doors. She loosed
       the strap from the handle of the door, put in the key, and drove it straight
-      home to shoot back the bolts that held the doors;<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-161" id="linknoteref-161"
-        class="pginternal"><sup>[161]</sup></a> these flew open with a noise like a
+      home to shoot back the bolts that held the doors;<a href="#footnote-1" id="linknoteref-161" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> these flew open with a noise like a
       bull bellowing in a meadow, and Penelope stepped upon the raised platform,
       where the chests stood in which the fair linen and clothes were laid by along
       with fragrant herbs: reaching thence, she took down the bow with its bow case
@@ -10153,8 +9995,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       As he spoke he sprang from his seat, threw his crimson cloak from him, and took
       his sword from his shoulder. First he set the axes in a row, in a long groove
-      which he had dug for them, and had made straight by line.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-162" id="linknoteref-162"
-        class="pginternal"><sup>[162]</sup></a> Then he
+      which he had dug for them, and had made straight by line.<a href="#footnote-2" id="linknoteref-162" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> Then he
       stamped the earth tight round them, and everyone was surprised when they saw
       him set them up so orderly, though he had never seen anything of the kind
       before. This done, he went on to the pavement to make trial of the bow; thrice
@@ -10185,8 +10026,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       The rest agreed, and Leiodes son of Oenops was the first to rise. He was
       sacrificial priest to the suitors, and sat in the corner near the mixing-bowl.
-      <a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-163" id="linknoteref-163"
-        class="pginternal"><sup>[163]</sup></a> He was the
+      <a href="#footnote-3" id="linknoteref-163" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> He was the
       only man who hated their evil deeds and was indignant with the others. He was
       now the first to take the bow and arrow, so he went on to the pavement to make
       his trial, but he could not string the bow, for his hands were weak and unused
@@ -10201,8 +10041,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
     </p>
 
 <p>
-      On this he put the bow down, letting it lean against the door,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-164" id="linknoteref-164"
-        class="pginternal"><sup>[164]</sup></a> with the arrow
+      On this he put the bow down, letting it lean against the door,<a href="#footnote-4" id="linknoteref-164" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> with the arrow
       standing against the tip of the bow. Then he took his seat again on the seat
       from which he had risen; and Antinous rebuked him saying:
     </p>
@@ -10468,8 +10307,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
     </p>
 
 <p>
-      He took an arrow that was lying upon the table<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-165" id="linknoteref-165"
-        class="pginternal"><sup>[165]</sup></a>—for those which the Achaeans
+      He took an arrow that was lying upon the table<a href="#footnote-5" id="linknoteref-165" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a>—for those which the Achaeans
       were so shortly about to taste were all inside the quiver—he laid it on
       the centre-piece of the bow, and drew the notch of the arrow and the string
       toward him, still seated on his seat. When he had taken aim he let fly, and his
@@ -10511,8 +10349,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       that he fell over and the cup dropped from his hand, while a thick stream of
       blood gushed from his nostrils. He kicked the table from him and upset the
       things on it, so that the bread and roasted meats were all soiled as they fell
-      over on to the ground.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-166"
-        id="linknoteref-166" class="pginternal"><sup>[166]</sup></a> The suitors were in an uproar when
+      over on to the ground.<a href="#footnote-1" id="linknoteref-166" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> The suitors were in an uproar when
       they saw that a man had been hit; they sprang in dismay one and all of them
       from their seats and looked everywhere towards the walls, but there was neither
       shield nor spear, and they rebuked Ulysses very angrily.
@@ -10530,8 +10367,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 
 <p>
       “Dogs, did you think that I should not come back from Troy? You have
-      wasted my substance,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-167"
-        id="linknoteref-167" class="pginternal"><sup>[167]</sup></a> have forced my women servants to
+      wasted my substance,<a href="#footnote-2" id="linknoteref-167" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> have forced my women servants to
       lie with you, and have wooed my wife while I was still living. You have feared
       neither God nor man, and now you shall die.”
     </p>
@@ -10618,16 +10454,13 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       another: when his arrows gave out, he set the bow to stand against the end wall
       of the house by the door post, and hung a shield four hides thick about his
       shoulders; on his comely head he set his helmet, well wrought with a crest of
-      horse-hair that nodded menacingly above it,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-168" id="linknoteref-168"
-        class="pginternal"><sup>[168]</sup></a> and he grasped two redoubtable
+      horse-hair that nodded menacingly above it,<a href="#footnote-3" id="linknoteref-168" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a> and he grasped two redoubtable
       bronze-shod spears.
     </p>
 
 <p>
-      Now there was a trap door<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-169"
-        id="linknoteref-169" class="pginternal"><sup>[169]</sup></a> on the wall, while at one end of
-      the pavement<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-170"
-        id="linknoteref-170" class="pginternal"><sup>[170]</sup></a>
+      Now there was a trap door<a href="#footnote-4" id="linknoteref-169" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> on the wall, while at one end of
+      the pavement<a href="#footnote-5" id="linknoteref-170" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a>
       there was an exit leading to a narrow passage, and this exit was closed by a
       well-made door. Ulysses told Philoetius to stand by this door and guard it, for
       only one person could attack it at a time. But Agelaus shouted out,
@@ -10648,8 +10481,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       On this the goatherd Melanthius went by back passages to the store-room of
       Ulysses’ house. There he chose twelve shields, with as many helmets and
       spears, and brought them back as fast as he could to give them to the suitors.
-      Ulysses’ heart began to fail him when he saw the suitors<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-171" id="linknoteref-171"
-        class="pginternal"><sup>[171]</sup></a> putting on
+      Ulysses’ heart began to fail him when he saw the suitors<a href="#footnote-6" id="linknoteref-171" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a> putting on
       their armour and brandishing their spears. He saw the greatness of the danger,
       and said to Telemachus, “Some one of the women inside is helping the
       suitors against us, or it may be Melanthius.”
@@ -10678,8 +10510,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       matter what they do; go back both of you and bind Melanthius’ hands and
       feet behind him. Throw him into the store room and make the door fast behind
       you; then fasten a noose about his body, and string him close up to the rafters
-      from a high bearing-post,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-172"
-        id="linknoteref-172" class="pginternal"><sup>[172]</sup></a> that he may linger on in an
+      from a high bearing-post,<a href="#footnote-7" id="linknoteref-172" class="pginternal"><sup>[7]</sup><span class="tooltip"></span></a> that he may linger on in an
       agony.”
     </p>
 
@@ -10725,8 +10556,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
     </p>
 
 <p>
-      This made Minerva still more furious, so she scolded Ulysses very angrily.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-173" id="linknoteref-173"
-        class="pginternal"><sup>[173]</sup></a>
+      This made Minerva still more furious, so she scolded Ulysses very angrily.<a href="#footnote-8" id="linknoteref-173" class="pginternal"><sup>[8]</sup><span class="tooltip"></span></a>
       “Ulysses,” said she, “your strength and prowess are no longer
       what they were when you fought for nine long years among the Trojans about the
       noble lady Helen. You killed many a man in those days, and it was through your
@@ -10830,15 +10660,13 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 <p>
       The minstrel Phemius son of Terpes—he who had been forced by the suitors
       to sing to them—now tried to save his life. He was standing near towards
-      the trap door,<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-174"
-        id="linknoteref-174" class="pginternal"><sup>[174]</sup></a> and held his lyre in his hand. He
+      the trap door,<a href="#footnote-9" id="linknoteref-174" class="pginternal"><sup>[9]</sup><span class="tooltip"></span></a> and held his lyre in his hand. He
       did not know whether to fly out of the cloister and sit down by the altar of
       Jove that was in the outer court, and on which both Laertes and Ulysses had
       offered up the thigh bones of many an ox, or whether to go straight up to
       Ulysses and embrace his knees, but in the end he deemed it best to embrace
       Ulysses’ knees. So he laid his lyre on the ground between the mixing bowl
-      <a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-175" id="linknoteref-175"
-        class="pginternal"><sup>[175]</sup></a> and the
+      <a href="#footnote-10" id="linknoteref-175" class="pginternal"><sup>[10]</sup><span class="tooltip"></span></a> and the
       silver-studded seat; then going up to Ulysses he caught hold of his knees and
       said, “Ulysses, I beseech you have mercy on me and spare me. You will be
       sorry for it afterwards if you kill a bard who can sing both for gods and men
@@ -10916,15 +10744,13 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       destruction, for they respected no man in the whole world, neither rich nor
       poor, who came near them, and they have come to a bad end as a punishment for
       their wickedness and folly. Now, however, tell me which of the women in the
-      house have misconducted themselves, and who are innocent.”<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-176" id="linknoteref-176"
-        class="pginternal"><sup>[176]</sup></a>
+      house have misconducted themselves, and who are innocent.”<a href="#footnote-11" id="linknoteref-176" class="pginternal"><sup>[11]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
       “I will tell you the truth, my son,” answered Euryclea.
       “There are fifty women in the house whom we teach to do things, such as
-      carding wool, and all kinds of household work. Of these, twelve in all<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-177" id="linknoteref-177"
-        class="pginternal"><sup>[177]</sup></a> have
+      carding wool, and all kinds of household work. Of these, twelve in all<a href="#footnote-12" id="linknoteref-177" class="pginternal"><sup>[12]</sup><span class="tooltip"></span></a> have
       misbehaved, and have been wanting in respect to me, and also to Penelope. They
       showed no disrespect to Telemachus, for he has only lately grown and his mother
       never permitted him to give orders to the female servants; but let me go
@@ -10970,8 +10796,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       and as thrushes or doves beat against a net that has been set for them in a
       thicket just as they were getting to their nest, and a terrible fate awaits
       them, even so did the women have to put their heads in nooses one after the
-      other and die most miserably.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-178"
-        id="linknoteref-178" class="pginternal"><sup>[178]</sup></a> Their feet moved convulsively for a
+      other and die most miserably.<a href="#footnote-13" id="linknoteref-178" class="pginternal"><sup>[13]</sup><span class="tooltip"></span></a> Their feet moved convulsively for a
       while, but not for very long.
     </p>
 
@@ -11008,8 +10833,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       from their apartment with torches in their hands, and pressed round Ulysses to
       embrace him, kissing his head and shoulders and taking hold of his hands. It
       made him feel as if he should like to weep, for he remembered every one of
-      them.<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-179" id="linknoteref-179"
-        class="pginternal"><sup>[179]</sup></a>
+      them.<a href="#footnote-14" id="linknoteref-179" class="pginternal"><sup>[14]</sup><span class="tooltip"></span></a>
     </p>'),
 ('BOOK XXIII', '
       PENELOPE EVENTUALLY RECOGNISES HER HUSBAND—EARLY IN THE MORNING ULYSSES,
@@ -11103,14 +10927,12 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       whether she should keep at a distance from her husband and question him, or
       whether she should at once go up to him and embrace him. When, however, she had
       crossed the stone floor of the cloister, she sat down opposite Ulysses by the
-      fire, against the wall at right angles<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-180" id="linknoteref-180"
-        class="pginternal"><sup>[180]</sup></a> [to that by which she had entered],
+      fire, against the wall at right angles<a href="#footnote-1" id="linknoteref-180" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> [to that by which she had entered],
       while Ulysses sat near one of the bearing-posts, looking upon the ground, and
       waiting to see what his brave wife would say to him when she saw him. For a
       long time she sat silent and as one lost in amazement. At one moment she looked
       him full in the face, but then again directly, she was misled by his shabby
-      clothes and failed to recognise him,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-181" id="linknoteref-181"
-        class="pginternal"><sup>[181]</sup></a> till Telemachus began to reproach
+      clothes and failed to recognise him,<a href="#footnote-2" id="linknoteref-181" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> till Telemachus began to reproach
       her and said:
     </p>
 
@@ -11169,8 +10991,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       sound of men and women dancing, and the people outside said, “I suppose
       the queen has been getting married at last. She ought to be ashamed of herself
       for not continuing to protect her husband’s property until he comes
-      home.”<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-182" id="linknoteref-182"
-        class="pginternal"><sup>[182]</sup></a>
+      home.”<a href="#footnote-3" id="linknoteref-182" class="pginternal"><sup>[3]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -11297,8 +11118,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       Thus did they converse. Meanwhile Eurynome and the nurse took torches and made
       the bed ready with soft coverlets; as soon as they had laid them, the nurse
       went back into the house to go to her rest, leaving the bed chamber woman
-      Eurynome<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-183" id="linknoteref-183"
-        class="pginternal"><sup>[183]</sup></a> to
+      Eurynome<a href="#footnote-4" id="linknoteref-183" class="pginternal"><sup>[4]</sup><span class="tooltip"></span></a> to
       show Ulysses and Penelope to bed by torch light. When she had conducted them to
       their room she went back, and they then came joyfully to the rites of their own
       old bed. Telemachus, Philoetius, and the swineherd now left off dancing, and
@@ -11357,10 +11177,8 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       to the wooded lands out in the country to see my father who has so long been
       grieved on my account, and to yourself I will give these instructions, though
       you have little need of them. At sunrise it will at once get abroad that I have
-      been killing the suitors; go upstairs, therefore,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-184" id="linknoteref-184"
-        class="pginternal"><sup>[184]</sup></a> and stay there with your women. See
-      nobody and ask no questions.”<a href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-185"
-        id="linknoteref-185" class="pginternal"><sup>[185]</sup></a>
+      been killing the suitors; go upstairs, therefore,<a href="#footnote-5" id="linknoteref-184" class="pginternal"><sup>[5]</sup><span class="tooltip"></span></a> and stay there with your women. See
+      nobody and ask no questions.”<a href="#footnote-6" id="linknoteref-185" class="pginternal"><sup>[6]</sup><span class="tooltip"></span></a>
     </p>
 
 <p>
@@ -11503,8 +11321,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       the waning of moons and many days had been accomplished, one of her maids who
       knew what she was doing told us, and we caught her in the act of undoing her
       work, so she had to finish it whether she would or no; and when she showed us
-      the robe she had made, after she had had it washed,<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-186" id="linknoteref-186"
-        class="pginternal"><sup>[186]</sup></a> its splendour was as that of the
+      the robe she had made, after she had had it washed,<a href="#footnote-1" id="linknoteref-186" class="pginternal"><sup>[1]</sup><span class="tooltip"></span></a> its splendour was as that of the
       sun or moon.
     </p>
 
@@ -11731,8 +11548,7 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       Then Dolius put out both his hands and went up to Ulysses. “Sir,”
       said he, seizing his master’s hand and kissing it at the wrist, “we
       have long been wishing you home: and now heaven has restored you to us after we
-      had given up hoping. All hail, therefore, and may the gods prosper you.<a         href="https://www.gutenberg.org/cache/epub/1727/pg1727-images.html#linknote-187" id="linknoteref-187"
-        class="pginternal"><sup>[187]</sup></a> But tell me,
+      had given up hoping. All hail, therefore, and may the gods prosper you.<a href="#footnote-2" id="linknoteref-187" class="pginternal"><sup>[2]</sup><span class="tooltip"></span></a> But tell me,
       does Penelope already know of your return, or shall we send some one to tell
       her?”
     </p>
@@ -11893,4 +11709,378 @@ INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
       form and voice of Mentor, and presently made a covenant of peace between the
       two contending parties.
     </p>');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'Black races are evidently known to the      writer as stretching all across Africa, one half looking West on to the      Atlantic, and the other East on to the Indian Ocean.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'The original use of the footstool was      probably less to rest the feet than to keep them (especially when bare) from a      floor which was often wet and dirty.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'The      θρόνος or seat, is occasionally called      “high,” as being higher than the      θρῆνυς or low footstool. It was probably no      higher than an ordinary chair is now, and seems to have had no back.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'Temesa was on the West Coast of the toe      of Italy, in what is now the gulf of Sta Eufemia. It was famous in remote times      for its copper mines, which, however, were worked out when Strabo wrote.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'i.e. “with a current in      it”—see illustrations and map near the end of bks. v. and vi.      respectively.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'Reading      Νηρίτῳ for Νηίῳ, cf.      “Od.” iii. 81 where the same mistake is made, and xiii. 351 where      the mountain is called Neritum, the same place being intended both here and in      book xiii.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'It is never plausibly explained why      Penelope cannot do this, and from bk. ii. it is clear that she kept on      deliberately encouraging the suitors, though we are asked to believe that she      was only fooling them.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'See note on “Od.” i. 365.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'Middle Argos means the Peleponnese      which, however, is never so called in the “Iliad”. I presume      “middle” means “middle between the two Greek-speaking      countries of Asia Minor and Sicily, with South Italy”; for that parts of      Sicily and also large parts, though not the whole of South Italy, were      inhabited by Greek-speaking races centuries before the Dorian colonisations can      hardly be doubted. The Sicians, and also the Sicels, both of them probably      spoke Greek.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'cf. “Il.” vi. 490-495. In      the “Iliad” it is “war,” not “speech,” that      is a man’s matter. It argues a certain hardness, or at any rate dislike      of the “Iliad” on the part of the writer of the      “Odyssey,” that she should have adopted Hector’s farewell to      Andromache here, as elsewhere in the poem, for a scene of such inferior      pathos.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'μέγαρα      σκιοέντα The whole open court with the      covered cloister running round it was called      μέγαρον, or      μέγαρα, but the covered part was distinguished      by being called “shady” or “shadow-giving”. It was in      this part that the tables for the suitors were laid. The Fountain Court at      Hampton Court may serve as an illustration (save as regards the use of arches      instead of wooden supports and rafters) and the arrangement is still common in      Sicily. The usual translation “shadowy” or “dusky”      halls, gives a false idea of the scene.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'The reader will note the extreme care      which the writer takes to make it clear that none of the suitors were allowed      to sleep in Ulysses’ house.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'See Appendix; g, in plan of      Ulysses’ house.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'I imagine this passage to be a      rejoinder to “Il.” xxiii. 702-705 in which a tripod is valued at      twelve oxen, and a good useful maid of all work at only four. The scrupulous      regard of Laertes for his wife’s feelings is of a piece with the extreme      jealousy for the honour of woman, which is manifest throughout the      “Odyssey”.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'χιτῶνα      “The χιτών, or tunica, was a shirt or      shift, and served as the chief under garment of the Greeks and Romans, whether      men or women.” Smith’s Dictionary of Greek and Roman Antiquities,      under “Tunica”.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('1', 'Doors fastened to all intents and      purposes as here described may be seen in the older houses at Trapani. There is      a slot on the outer side of the door by means of which a person who has left      the room can shoot the bolt. My bedroom at the Albergo Centrale was fastened in      this way.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('2', 'πύματον δ’      ὡπλίσσατο      δόρπον. So we vulgarly say “had cooked his      goose,” or “had settled his hash.” Ægyptius cannot of course      know of the fate Antiphus had met with, for there had as yet been no news of or      from Ulysses.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('2', '“Il.” xxii. 416.      σχέσθε φίλοι,      καὶ μ’ οἷον      ἐάσατε...... The authoress has bungled by      borrowing these words verbatim from the “Iliad”, without prefixing      the necessary “do not,” which I have supplied.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('2', 'i.e. you have money, and could pay      when I got judgment, whereas the suitors are men of straw.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('2', 'cf. “Il.” ii. 76.      ἦ τοι ὄ γ’ ὦς      εὶπὼν κατ’ ἄρ’      ἔζετο τοῖσι δ’      ἀνέστη      Νέστωρ, ὄς ῥα.......................................      ὄ σφιν ἐὺ      φρονέων      ἀγορήσατο καὶ      μετέειπεν.      The Odyssean passage runs—      “ἦ τοι ὄ γ’ ὦς      εὶπὼν κατ’ ἄρ’      ἔζετο τοῖσι δ’      ἀνέστη      Μεντορ ὄς ῥ’.......................................      ὄ σφιν ἐὺ      φρονέων      ἀγορήσατο καὶ      μετέειπεν.      Is it possible not to suspect that the name Mentor was coined upon that of Nestor?');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('2', 'i.e. in the outer court, and in the      uncovered part of the inner house.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('2', 'This would be fair from Sicily, which      was doing duty for Ithaca in the mind of the writer, but a North wind would      have been preferable for a voyage from the real Ithaca to Pylos.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('2', 'κελάδοντ’ ἐπὶ      οὶνοπα πόντον The      wind does not whistle over waves. It only whistles through rigging or some      other obstacle that cuts it.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('3', 'cf. “Il.” v.20.      Ἰδαῖος δ’      ἀπόρουσε      λιπὼν      περικαλλέα      δίφρον, the Odyssean line is      ἠέλιος δ’      ἀνόρουσε      λιπὼν      περικαλλέα      λίμνην. There can be no doubt that the Odyssean      line was suggested by the Iliadic, but nothing can explain why Idæus jumping      from his chariot should suggest to the writer of the “Odyssey” the      sun jumping from the sea. The probability is that she never gave the matter a      thought, but took the line in question as an effect of saturation with the      “Iliad,” and of unconscious cerebration. The “Odyssey”      contains many such examples.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('3', 'The heart, liver, lights, kidneys,      etc. were taken out from the inside and eaten first as being more readily      cooked; the {Greek}, or bone meat, was cooking while the {Greek} or inward      parts were being eaten. I imagine that the thigh bones made a kind of gridiron,      while at the same time the marrow inside them got cooked.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('3', 'i.e. skewers, either single, double,      or even five pronged. The meat would be pierced with the skewer, and laid over      the ashes to grill—the two ends of the skewer being supported in whatever      way convenient. Meat so cooking may be seen in any eating house in Smyrna, or      any Eastern town. When I rode across the Troad from the Dardanelles to      Hissarlik and Mount Ida, I noticed that my dragoman and his men did all our      outdoor cooking exactly in the Odyssean and Iliadic fashion.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('3', 'cf. “Il.” xvii. 567.      {Greek} The Odyssean lines are—{Greek}');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('3', 'Reading {Greek} for {Greek}, cf.      “Od.” i. 186.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('3', '29  The geography of the Ægean as above      described is correct, but is probably taken from the lost poem, the Nosti, the      existence of which is referred to “Od.” i. 326, 327 and 350,      &c. A glance at the map will show that heaven advised its supplicants quite      correctly.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('3', 'The writer—ever jealous for the      honour of women—extenuates Clytemnestra’s guilt as far as possible,      and explains it as due to her having been left unprotected, and fallen into the      hands of a wicked man.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('3', 'The Greek is {Greek} cf.      “Iliad” ii. 408 {Greek} Surely the {Greek} of the Odyssean passage      was due to the {Greek} of the “Iliad.” No other reason suggests      itself for the making Menelaus return on the very day of the feast given by      Orestes. The fact that in the “Iliad” Menelaus came to a banquet      without waiting for an invitation, determines the writer of the      “Odyssey” to make him come to a banquet, also uninvited, but as      circumstances did not permit of his having been invited, his coming uninvited      is shown to have been due to chance. I do not think the authoress thought all      this out, but attribute the strangeness of the coincidence to unconscious      cerebration and saturation.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('3', 'cf. “Il.” I. 458, II.      421. The writer here interrupts an Iliadic passage (to which she returns      immediately) for the double purpose of dwelling upon the slaughter of the      heifer, and of letting Nestor’s wife and daughter enjoy it also. A male      writer, if he was borrowing from the “Iliad,” would have stuck to      his borrowing.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('3', 'cf. “Il.” xxiv. 587, 588      where the lines refer to the washing the dead body of Hector.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('3', 'See illustration on opposite page.      The yard is typical of many that may be seen in Sicily. The existing      ground-plan is probably unmodified from Odyssean, and indeed long pre-Odyssean      times, but the earlier buildings would have no arches, and would, one would      suppose, be mainly timber. The Odyssean {Greek} were the sheds that ran round      the yard as the arches do now. The {Greek} was the one through which the main      entrance passed, and which was hence “noisy,” or reverberating. It      had an upper story in which visitors were often lodged.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('3', 'This journey is an impossible one.      Telemachus and Pisistratus would have been obliged to drive over the Taygetus      range, over which there has never yet been a road for wheeled vehicles. It is      plain therefore that the audience for whom the “Odyssey” was      written was one that would be unlikely to know anything about the topography of      the Peloponnese, so that the writer might take what liberties she chose.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'The lines which I have enclosed in      brackets are evidently an afterthought—added probably by the writer      herself—for they evince the same instinctively greater interest in      anything that may concern a woman, which is so noticeable throughout the poem.      There is no further sign of any special festivities nor of any other guests      than Telemachus and Pisistratus, until lines 621-624 (ordinarily enclosed in      brackets) are abruptly introduced, probably with a view of trying to carry off      the introduction of the lines now in question.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'Sparta and Lacedaemon are here      treated as two different places, though in other parts of the poem it is clear      that the writer understands them as one. The catalogue in the      “Iliad,” which the writer is here presumably following, makes the      same mistake (“Il.” ii. 581, 582)');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'These last three lines are identical      with “Il.” vxiii. 604-606.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'From the Greek {Greek} it is plain      that Menelaus took up the piece of meat with his fingers.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'Amber is never mentioned in the      “Iliad.” Sicily, where I suppose the “Odyssey” to have      been written, has always been, and still is, one of the principal amber      producing countries. It was probably the only one known in the Odyssean age.      See “The Authoress of the Odyssey,” Longmans 1898, p. 186.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'This no doubt refers to the story      told in the last poem of the Cypria about Paris and Helen robbing Menelaus of      the greater part of his treasures, when they sailed together for Troy.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'It is inconceivable that Helen should      enter thus, in the middle of supper, intending to work with her distaff, if      great festivities were going on. Telemachus and Pisistratus are evidently      dining en famille.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'In the Italian insurrection of 1848,      eight young men who were being hotly pursued by the Austrian police hid      themselves inside Donatello’s colossal wooden horse in the Salone at      Padua, and remained there for a week being fed by their confederates. In 1898      the last survivor was carried round Padua in triumph.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'The Greek is {Greek}. Is it unfair to      argue that the writer is a person of somewhat delicate sensibility, to whom a      strong smell of fish is distasteful?');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'The Greek is {Greek}. I believe this      to be a hit at the writer’s own countrymen who were of Phocaean descent,      and the next following line to be a rejoinder to complaints made against her in      bk. vi. 273-288, to the effect that she gave herself airs and would marry none      of her own people. For that the writer of the “Odyssey” was the      person who has been introduced into the poem under the name of Nausicaa, I      cannot bring myself to question. I may remind English readers that {Greek}      (i.e. phoca) means “seal.” Seals almost always appear on Phocaean      coins.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'Surely here again we are in the hands      of a writer of delicate sensibility. It is not as though the seals were stale;      they had only just been killed. The writer, however is obviously laughing at      her own countrymen, and insulting them as openly as she dares.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'We were told above (lines 356, 357)      that it was only one day’s sail.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'I give the usual translation, but I      do not believe the Greek will warrant it. The Greek reads {Greek}.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('4', 'See note on line 3 of this book. The      reader will observe that the writer has been unable to keep the women out of an      interpolation consisting only of four lines.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('5', 'Scheria means a piece of land jutting      out into the sea. In my “Authoress of the Odyssey” I thought      “Jutland” would be a suitable translation, but it has been pointed      out to me that “Jutland” only means the land of the Jutes.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('5', 'Irrigation as here described is      common in gardens near Trapani. The water that supplies the ducts is drawn from      wells by a mule who turns a wheel with buckets on it.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('5', 'There is not a word here about the      cattle of the sun-god.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('5', 'The writer evidently thought that      green, growing wood might also be well seasoned.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('5', 'The reader will note that the river      was flowing with salt water i.e. that it was tidal.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('6', 'Then the Ogygian island was not so      far off, but that Nausicaa might be assumed to know where it was.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('6', 'Greek {Greek}');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('7', 'I suspect a family joke, or sly      allusion to some thing of which we know nothing, in this story of      Eurymedusa’s having been brought from Apeira. The Greek word      “apeiros” means “inexperienced,”      “ignorant.” Is it possible that Eurymedusa was notoriously      incompetent?');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('7', 'Polyphemus was also son to Neptune,      see “Od.” ix. 412, 529. he was therefore half brother to Nausithous,      half uncle to King Alcinous, and half great uncle to Nausicaa.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('7', 'It would seem as though the writer      thought that Marathon was close to Athens.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('7', 'Here the writer, knowing that she is      drawing (with embellishments) from things actually existing, becomes impatient      of past tenses and slides into the present.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('7', 'This is hidden malice, implying that      the Phaeacian magnates were no better than they should be. The final      drink-offering should have been made to Jove or Neptune, not to the god of      thievishness and rascality of all kinds. In line 164 we do indeed find Echeneus      proposing that a drink-offering should be made to Jove, but Mercury is      evidently, according to our authoress, the god who was most likely to be of use      to them.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('7', 'The fact of Alcinous knowing anything      about the Cyclopes suggests that in the writer’s mind Scheria and the      country of the Cyclopes were not very far from one another. I take the Cyclopes      and the giants to be one and the same people.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('7', '“My property, etc.” The      authoress is here adopting an Iliadic line (xix. 333), and this must account      for the absence of all reference to Penelope. If she had happened to remember      “Il.” v. 213, she would doubtless have appropriated it by      preference, for that line reads “my country, my wife, and all the      greatness of my house.”');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('7', 'The at first inexplicable sleep of      Ulysses (bk. xiii. 79, etc.) is here, as also in viii. 445, being obviously      prepared. The writer evidently attached the utmost importance to it. Those who      know that the harbour which did duty with the writer of the      “Odyssey” for the one in which Ulysses landed in Ithaca, was only      about 2 miles from the place in which Ulysses is now talking with Alcinous,      will understand why the sleep was so necessary.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('8', 'There were two classes—the      lower who were found in provisions which they had to cook for themselves in the      yards and outer precincts, where they would also eat—and the upper who      would eat in the cloisters of the inner court, and have their cooking done for      them.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('8', 'Translation very dubious. I suppose      the {Greek} here to be the covered sheds that ran round the outer courtyard.      See illustrations at the end of bk. iii.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('8', 'The writer apparently deems that the      words “as compared with what oxen can plough in the same time” go      without saying. Not so the writer of the “Iliad” from which the      Odyssean passage is probably taken. He explains that mules can plough quicker      than oxen (“Il.” x. 351-353)');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('8', 'It was very fortunate that such a      disc happened to be there, seeing that none like it were in common use.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('8', '“Il.” xiii. 37. Here, as      so often elsewhere in the “Odyssey,” the appropriation of an      Iliadic line which is not quite appropriate puzzles the reader. The      “they” is not the chains, nor yet Mars and Venus. It is an overflow      from the Iliadic passage in which Neptune hobbles his horses in bonds      “which none could either unloose or break so that they might stay there      in that place.” If the line would have scanned without the addition of      the words “so that they might stay there in that place,” they would      have been omitted in the “Odyssey.”');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('8', 'The reader will note that Alcinous      never goes beyond saying that he is going to give the goblet; he never gives      it. Elsewhere in both “Iliad” and “Odyssey” the offer      of a present is immediately followed by the statement that it was given and      received gladly—Alcinous actually does give a chest and a cloak and      shirt—probably also some of the corn and wine for the long two-mile      voyage was provided by him—but it is quite plain that he gave no talent      and no cup.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('8', '“Il.” xviii. 344-349.      These lines in the “Iliad” tell of the preparation for washing the      body of Patroclus, and I am not pleased that the writer of the      “Odyssey” should have adopted them here.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('8', 'see note 64 :');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('8', 'see note 43 :');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('8', 'The reader will find this threat      fulfilled in bk. xiii');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('9', 'If the other islands lay some      distance away from Ithaca (which the word {Greek} suggests), what becomes of      the πόρθμος or gut between Ithaca and Samos      which we hear of in Bks. iv. and xv.? I suspect that the authoress in her mind      makes Telemachus come back from Pylos to the Lilybaean promontory and thence to      Trapani through the strait between the Isola Grande and the      mainland—the island of Asteria being the one on which Motya afterwards      stood.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('9', '“Il.” xviii. 533-534. The      sudden lapse into the third person here for a couple of lines is due to the      fact that the two Iliadic lines taken are in the third person.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('9', 'cf. “Il.” ii. 776. The      words in both “Iliad” and “Odyssey” are Footnote      Greek. In the “Iliad” they are used of the horses of      Achilles’ followers as they stood idle, “champing lotus.”');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('9', 'I take all this passage about the      Cyclopes having no ships to be sarcastic—meaning, “You people of      Drepanum have no excuse for not colonising the island of Favognana, which you      could easily do, for you have plenty of ships, and the island is a very good      one.” For that the island so fully described here is the Aegadean or      “goat” island of Favognana, and that the Cyclopes are the old Sican      inhabitants of Mt. Eryx should not be doubted.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('9', 'For the reasons why it was necessary      that the night should be so exceptionally dark see “The Authoress of the      Odyssey” pp. 188-189.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('9', 'None but such lambs as would suck if      they were with their mothers would be left in the yard. The older lambs should      have been out feeding. The authoress has got it all wrong, but it does not      matter. See “The Authoress of the Odyssey” p. 148.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('9', 'This line is enclosed in brackets in      the received text, and is omitted (with note) by Messrs. Butcher & Lang.      But lines enclosed in brackets are almost always genuine; all that brackets      mean is that the bracketed passage puzzled some early editor, who nevertheless      found it too well established in the text to venture on omitting it. In the      present case the line bracketed is the very last which a full-grown male editor      would be likely to interpolate. It is safer to infer that the writer, a young      woman, not knowing or caring at which end of the ship the rudder should be,      determined to make sure by placing it at both ends, which we shall find she      presently does by repeating it (line 340) at the stern of the ship. As for the      two rocks thrown, the first I take to be the Asinelli, see map facing p. 80.      The second I see as the two contiguous islands of the Formiche, which are      treated as one, see map facing p. 108. The Asinelli is an island shaped like a      boat, and pointing to the island of Favognana. I think the authoress’s      compatriots, who probably did not like her much better that she did them,      jeered at the absurdity of Ulysses’ conduct, and saw the Asinelli or      “donkeys,” not as the rock thrown by Polyphemus, but as the boat      itself containing Ulysses and his men.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('9', 'This line exists in the text here but      not in the corresponding passage xii. 141. I am inclined to think it is      interpolated (probably by the poetess herself) from the first of lines xi.      115-137, which I can hardly doubt were added by the writer when the scheme of      the work was enlarged and altered. See “The Authoress of the      Odyssey” pp. 254-255.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('10', '“Floating”      (πλωτῇ) is not to be taken literally. The island      itself, as apart from its inhabitants, was quite normal. There is no indication      of its moving during the month that Ulysses stayed with Aeolus, and on his      return from his unfortunate voyage, he seems to have found it in the same      place. The πλωτῇ in fact should no more be pressed      than θοῇσι as applied to islands,      “Odyssey” xv. 299—where they are called “flying”      because the ship would fly past them. So also the “Wanderers,” as      explained by Buttmann; see note on “Odyssey” xii. 57.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('10', 'Literally “for the ways of the      night and of the day are near.” I have seen what Mr. Andrew Lang says      (“Homer and the Epic,” p. 236, and “Longman’s      Magazine” for January, 1898, p. 277) about the “amber route”      and the “Sacred Way” in this connection; but until he gives his      grounds for holding that the Mediterranean peoples in the Odyssean age used to      go far North for their amber instead of getting it in Sicily, where it is still      found in considerable quantities, I do not know what weight I ought to attach      to his opinion. I have been unable to find grounds for asserting that B.C. 1000      there was any commerce between the Mediterranean and the “Far      North,” but I shall be very ready to learn if Mr. Lang will enlighten me.      See “The Authoress of the Odyssey” pp. 185-186.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('10', 'One would have thought that when the      sun was driving the stag down to the water, Ulysses might have observed its      whereabouts.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('10', 'See Hobbes of Malmesbury’s      translation.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('10', '“Il.” vxiii. 349. Again      the writer draws from the washing the body of Patroclus—which offends.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('11', 'This visit is wholly without      topographical significance.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('11', 'Brides presented themselves      instinctively to the imagination of the writer, as the phase of humanity which      she found most interesting.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('11', 'Ulysses was, in fact, to become a      missionary and preach Neptune to people who knew not his name. I was fortunate      enough to meet in Sicily a woman carrying one of these winnowing shovels; it      was not much shorter than an oar, and I was able at once to see what the writer      of the “Odyssey” intended.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('11', 'I suppose the lines I have enclosed      in brackets to have been added by the author when she enlarged her original      scheme by the addition of books i.-iv. and xiii. (from line 187)-xxiv. The      reader will observe that in the corresponding passage (xii. 137-141) the      prophecy ends with “after losing all your comrades,” and that there      is no allusion to the suitors. For fuller explanation see “The Authoress      of the Odyssey” pp. 254-255.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('11', 'The reader will remember that we are      in the first year of Ulysses’ wanderings, Telemachus therefore was only      eleven years old. The same anachronism is made later on in this book. See      “The Authoress of the Odyssey” pp. 132-133.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('11', 'Tradition says that she had hanged      herself. Cf. “Odyssey” xv. 355, etc.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('11', 'Not to be confounded with Aeolus king      of the winds.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('11', 'Melampus, vide book xv. 223, etc.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('11', 'I have already said in a note on bk.      xi. 186 that at this point of Ulysses’ voyage Telemachus could only be      between eleven and twelve years old.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('11', 'Is the writer a man or a woman?');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('11', 'Cf. “Il.” iv. 521,      {Greek}. The Odyssean line reads, {Greek}. The famous dactylism, therefore, of      the Odyssean line was probably suggested by that of the Ileadic rather than by      a desire to accommodate sound to sense. At any rate the double coincidence of a      dactylic line, and an ending {Greek}, seems conclusive as to the familiarity of      the writer of the “Odyssey” with the Iliadic line.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('12', 'Off the coast of Sicily and South      Italy, in the month of May, I have seen men fastened half way up a boat’s      mast with their feet resting on a crosspiece, just large enough to support      them. From this point of vantage they spear sword-fish. When I saw men thus      employed I could hardly doubt that the writer of the “Odyssey” had      seen others like them, and had them in her mind when describing the binding of      Ulysses. I have therefore with some diffidence ventured to depart from the      received translation of ἰστοπέδη (cf.      Alcaeus frag. 18, where, however, it is very hard to say what      ἰστοπέδαν means). In      Sophocles’ Lexicon I find a reference to Chrysostom (l, 242, A. Ed.      Benedictine Paris 1834-1839) for the word      ἰστοπόδη, which is probably the same      as ἰστοπέδη, but I have looked for      the passage in vain.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('12', 'The writer is at fault here and      tries to put it off on Circe. When Ulysses comes to take the route prescribed      by Circe, he ought to pass either the Wanderers or some other difficulty of      which we are not told, but he does not do so. The Planctae, or Wanderers, merge      into Scylla and Charybdis, and the alternative between them and something      untold merges into the alternative whether Ulysses had better choose Scylla or      Charybdis. Yet from line 260, it seems we are to consider the Wanderers as      having been passed by Ulysses; this appears even more plainly from xxiii. 327,      in which Ulysses expressly mentions the Wandering rocks as having been between      the Sirens and Scylla and Charybdis. The writer, however, is evidently unaware      that she does not quite understand her own story; her difficulty was perhaps      due to the fact that though Trapanese sailors had given her a fair idea as to      where all her other localities really were, no one in those days more than in      our own could localise the Planctae, which in fact, as Buttmann has argued,      were derived not from any particular spot, but from sailors’ tales about      the difficulties of navigating the group of the Aeolian islands as a whole (see      note on “Od.” x. 3). Still the matter of the poor doves caught her      fancy, so she would not forgo them. The whirlwinds of fire and the smoke that      hangs on Scylla suggests allusion to Stromboli and perhaps even Etna. Scylla is      on the Italian side, and therefore may be said to look West. It is about 8      miles thence to the Sicilian coast, so Ulysses may be perfectly well told that      after passing Scylla he will come to the Thrinacian island or Sicily. Charybdis      is transposed to a site some few miles to the north of its actual position.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('12', 'I suppose this line to have been      intercalated by the author when lines 426-446 were added.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('12', 'For the reasons which enable us to      identify the island of the two Sirens with the Lipari island now      Salinas—the ancient Didyme, or “twin” island—see The      Authoress of the Odyssey, pp. 195, 196. The two Sirens doubtless were, as their      name suggests, the whistling gusts, or avalanches of air that at times descend      without a moment’s warning from the two lofty mountains of      Salinas—as also from all high points in the neighbourhood.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('12', 'See Admiral Smyth on the currents      in the Straits of Messina, quoted in “The Authoress of the      Odyssey,” p. 197.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('12', 'In the islands of Favognana and      Marettimo off Trapani I have seen men fish exactly as here described. They chew      bread into a paste and throw it into the sea to attract the fish, which they      then spear. No line is used.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('12', 'The writer evidently regards      Ulysses as on a coast that looked East at no great distance south of the      Straits of Messina somewhere, say, near Tauromenium, now Taormina.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('12', 'Surely there must be a line missing      here to tell us that the keel and mast were carried down into Charybdis.      Besides, the aorist {Greek} in its present surrounding is perplexing. I have      translated it as though it were an imperfect; I see Messrs. Butcher and Lang      translate it as a pluperfect, but surely Charybdis was in the act of sucking      down the water when Ulysses arrived.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('12', 'I suppose the passage within      brackets to have been an afterthought but to have been written by the same hand      as the rest of the poem. I suppose xii. 103 to have been also added by the      writer when she decided on sending Ulysses back to Charybdis. The simile      suggests the hand of the wife or daughter of a magistrate who had often seen      her father come in cross and tired.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'Gr.      πολυδαίδαλος. This      puts coined money out of the question, but nevertheless implies that the gold      had been worked into ornaments of some kind.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'I suppose Teiresias’ prophecy      of bk. xi. 114-120 had made no impression on Ulysses. More probably the      prophecy was an afterthought, intercalated, as I have already said, by the      authoress when she changed her scheme.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'A male writer would have made      Ulysses say, not “may you give satisfaction to your wives,” but      “may your wives give satisfaction to you.”');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'See note 64.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'The land was in reality the shallow      inlet, now the salt works of S. Cusumano—the neighbourhood of Trapani and      Mt. Eryx being made to do double duty, both as Scheria and Ithaca. Hence the      necessity for making Ulysses set out after dark, fall instantly into a profound      sleep, and wake up on a morning so foggy that he could not see anything till      the interviews between Neptune and Jove and between Ulysses and Minerva should      have given the audience time to accept the situation. See illustrations and map      near the end of bks. v. and vi. respectively.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'This cave, which is identifiable      with singular completeness, is now called the “grotta del toro,”      probably a corruption of “tesoro,” for it is held to contain a      treasure. See The Authoress of the Odyssey, pp. 167-170.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'Probably they would.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'Then it had a shallow shelving      bottom.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'Doubtless the road would pass the      harbour in Odyssean times as it passes the salt works now; indeed, if there is      to be a road at all there is no other level ground which it could take. See map      above referred to.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'The rock at the end of the Northern      harbour of Trapani, to which I suppose the writer of the “Odyssey”      to be here referring, still bears the name Malconsiglio—“the rock      of evil counsel.” There is a legend that it was a ship of Turkish pirates      who were intending to attack Trapani, but the “Madonna di Trapani”      crushed them under this rock just as they were coming into port. My friend      Cavaliere Giannitrapani of Trapani told me that his father used to tell him      when he was a boy that if he would drop exactly three drops of oil on to the      water near the rock, he would see the ship still at the bottom. The legend is      evidently a Christianised version of the Odyssean story, while the name      supplies the additional detail that the disaster happened in consequence of an      evil counsel.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'It would seem then that the ship      had got all the way back from Ithaca in about a quarter of an hour.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'And may we not add “and also      to prevent his recognising that he was only in the place where he had met      Nausicaa two days earlier.”');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'All this is to excuse the entire      absence of Minerva from books ix.-xii., which I suppose had been written      already, before the authoress had determined on making Minerva so prominent a      character.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'We have met with this somewhat lame      attempt to cover the writer’s change of scheme at the end of bk. vi.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'I take the following from The      Authoress of the Odyssey, p. 167. “It is clear from the text that there      were two caves not one, but some one has enclosed in brackets the two lines      in which the second cave is mentioned, I presume because he found himself      puzzled by having a second cave sprung upon him when up to this point he had      only been told of one.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'There is no attempt to disguise the      fact that Penelope had long given encouragement to the suitors. The only      defence set up is that she did not really mean to encourage them. Would it not      have been wiser to have tried a little discouragement?');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'See map near the end of bk. vi.      Ruccazzù dei corvi of course means “the rock of the ravens.”      Both name and ravens still exist.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('13', 'See The Authoress of the Odyssey,      pp. 140, 141. The real reason for sending Telemachus to Pylos and Lacedaemon      was that the authoress might get Helen of Troy into her poem. He was sent at      the only point in the story at which he could be sent, so he must have gone      then or not at all.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('14', 'The site I assign to      Eumaeus’s hut, close to the Ruccazzù dei corvi, is about 2,000      feet above the sea, and commands an extensive view.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('14', 'Sandals such as Eumaeus was making      are still worn in the Abruzzi and elsewhere. An oblong piece of leather forms      the sole: holes are cut at the four corners, and through these holes leathern      straps are passed, which are bound round the foot and cross-gartered up the      calf.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('15', 'See note 75 :');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('15', 'Telemachus like many another good      young man seems to expect every one to fetch and carry for him.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('15', '“Il.” vi. 288. The      store room was fragrant because it was made of cedar wood. See      “Il.” xxiv. 192.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('15', 'cf. “Il.” vi. 289 and      293-296. The dress was kept at the bottom of the chest as one that would only      be wanted on the greatest occasions; but surely the marriage of Hermione and of      Megapenthes (bk, iv. ad init.) might have induced Helen to wear it on      the preceding evening, in which case it could hardly have got back. We find no      hint here of Megapenthes’ recent marriage.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('15', 'See note 83.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('15', 'cf. “Od.” xi. 196,      etc.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('15', 'The names Syra and Ortygia, on      which island a great part of the Doric Syracuse was originally built, suggest      that even in Odyssean times there was a prehistoric Syracuse, the existence of      which was known to the writer of the poem.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('15', 'Literally “where are the      turnings of the sun.” Assuming, as we may safely do, that the Syra and      Ortygia of the “Odyssey” refer to Syracuse, it is the fact that not      far to the South of these places the land turns sharply round, so that mariners      following the coast would find the sun upon the other side of their ship to      that on which they’d had it hitherto.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('15', 'This harbour is again evidently the      harbour in which Ulysses had landed, i.e. the harbour that is now the salt      works of S. Cusumano.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('15', 'This never can have been anything      but very niggardly pay for some eight or nine days’ service. I suppose      the crew were to consider the pleasure of having had a trip to Pylos as a set      off. There is no trace of the dinner as having been actually given, either on      the following or any other morning.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('15', 'No hawk can tear its prey while it      is on the wing.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('16', 'The text is here apparently      corrupt, and will not make sense as it stands. I follow Messrs. Butcher &      Lang in omitting line 101.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('17', 'i.e. to be milked, as in South      Italian and Sicilian towns at the present day.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('17', 'The butchering and making ready the      carcases took place partly in the outer yard and partly in the open part of the      inner court.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('17', 'These words cannot mean that it      would be afternoon soon after they were spoken. Ulysses and Eumaeus reached the      town which was “some way off” (xvii. 25) in time for the      suitor’s early meal (xvii. 170 and 176) say at ten or eleven o’      clock. The context of the rest of the book shows this. Eumaeus and Ulysses,      therefore, cannot have started later than eight or nine, and Eumaeus’s      words must be taken as an exaggeration for the purpose of making Ulysses bestir      himself.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('17', 'I imagine the fountain to have been      somewhere about where the church of the Madonna di Trapani now stands,      and to have been fed with water from what is now called the Fontana Diffali on      Mt. Eryx.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('17', 'From this and other passages in the      “Odyssey” it appears that we are in an age anterior to the use of      coined money—an age when cauldrons, tripods, swords, cattle, chattels of      all kinds, measures of corn, wine, or oil, etc. etc., not to say pieces of      gold, silver, bronze, or even iron, wrought more or less, but unstamped, were      the nearest approach to a currency that had as yet been reached.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('17', 'Gr. ἐς      μέσσον.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('17', 'I correct these proofs abroad and      am not within reach of Hesiod, but surely this passage suggests acquaintance      with the Works and Ways, though it by no means compels it.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('17', 'It would seem as though Eurynome      and Euryclea were the same person. See note 156');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('18', 'It is plain, therefore, that Iris      was commonly accepted as the messenger of the gods, though our authoress will      never permit her to fetch or carry for any one.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('18', 'i.e. the doorway leading from the      inner to the outer court.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('18', 'See note 156');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('18', 'These, I imagine, must have been in      the open part of the inner courtyard, where the maids also stood, and threw the      light of their torches into the covered cloister that ran all round it. The      smoke would otherwise have been intolerable.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('19', 'Translation very uncertain; vide      Liddell and Scott, under {Greek}');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('19', 'See photo on opposite page.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('19', 'cf. “Il.” ii. 184, and      217, 218. An additional and well-marked feature being wanted to convince      Penelope, the writer has taken the hunched shoulders of Thersites (who is      mentioned immediately after Eurybates in the “Iliad”) and put them      on to Eurybates’ back.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('19', 'This is how geese are now fed in      Sicily, at any rate in summer, when the grass is all burnt up. I have never      seen them grazing.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('20', 'Lower down (line 143) Euryclea says      it was herself that had thrown the cloak over Ulysses—for the plural      should not be taken as implying more than one person. The writer is evidently      still fluctuating between Euryclea and Eurynome as the name for the old nurse.      She probably originally meant to call her Euryclea, but finding it not      immediately easy to make Euryclea scan in xvii. 495, she hastily called her      Eurynome, intending either to alter this name later or to change the earlier      Euryclea’s into Eurynome. She then drifted in to Eurynome as convenience      further directed, still nevertheless hankering after Euryclea, till at last she      found that the path of least resistance would lie in the direction of making      Eurynome and Euryclea two persons. Therefore in xxiii. 289-292 both Eurynome      and “the nurse” (who can be none other than Euryclea) come on      together. I do not say that this is feminine, but it is not unfeminine.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('20', 'See note 156');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('20', 'This, I take it, was immediately in      front of the main entrance of the inner courtyard into the body of the house.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('20', 'This is the only allusion to      Sardinia in either “Iliad” or “Odyssey.”');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('20', 'The normal translation of the Greek      word would be “holding back,” “curbing,”      “restraining,” but I cannot think that the writer meant      this—she must have been using the word in its other sense of      “having,” “holding,” “keeping,”      “maintaining.”');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('21', 'I have vainly tried to realise the      construction of the fastening here described.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('21', 'See plan of Ulysses’ house in      the appendix. It is evident that the open part of the court had no flooring but      the natural soil.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('21', 'See plan of Ulysses’ house,      and note 175.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('21', 'i.e. the door that led into the      body of the house.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('21', 'This was, no doubt, the little      table that was set for Ulysses, “Od.” xx. 259.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'The reader will note how the      spoiling of good food distresses the writer even in such a supreme moment as      this.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'Here we have it again. Waste of      substance comes first.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'cf. “Il.” iii. 337 and      three other places. It is strange that the author of the “Iliad”      should find a little horse-hair so alarming. Possibly enough she was merely      borrowing a common form line from some earlier poet—or poetess—for      this is a woman’s line rather than a man’s.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'Or perhaps simply      “window.” See plan in the appendix.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'i.e. the pavement on which Ulysses      was standing.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'The interpretation of lines 126-143      is most dubious, and at best we are in a region of melodrama: cf., however,      i. 425, etc. from which it appears that there was a tower in the outer court,      and that Telemachus used to sleep in it. The      ὀρσοθύρα I take to be a door, or trap      door, leading on to the roof above Telemachus’s bed room, which we are      told was in a place that could be seen from all round—or it might be      simply a window in Telemachus’s room looking out into the street. From      the top of the tower the outer world was to be told what was going on, but      people could not get in by the      ὀρσοθύρα: they would have to come in      by the main entrance, and Melanthius explains that the mouth of the narrow      passage (which was in the lands of Ulysses and his friends) commanded the only      entrance by which help could come, so that there would be nothing gained by      raising an alarm.          As for the ῥῶγες of line 143, no commentator      ancient or modern has been able to say what was intended—but whatever      they were, Melanthius could never carry twelve shields, twelve helmets, and      twelve spears. Moreover, where he could go the others could go also. If a dozen      suitors had followed Melanthius into the house they could have attacked Ulysses      in the rear, in which case, unless Minerva had intervened promptly, the      “Odyssey” would have had a different ending. But throughout the      scene we are in a region of extravagance rather than of true fiction—it      cannot be taken seriously by any but the very serious, until we come to the      episode of Phemius and Medon, where the writer begins to be at home again.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'I presume it was intended that      there should be a hook driven into the bearing-post.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'What for?');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'Gr: {Greek}. This is not {Greek}.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'From lines 333 and 341 of this      book, and lines 145 and 146 of bk. xxi we can locate the approach to the      {Greek} with some certainty.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'But in xix. 500-502 Ulysses scolded      Euryclea for offering information on this very point, and declared himself      quite able to settle it for himself.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'There were a hundred and eight      Suitors.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'Lord Grimthorpe, whose      understanding does not lend itself to easy imposition, has been good enough to      write to me about my conviction that the “Odyssey” was written by a      woman, and to send me remarks upon the gross absurdity of the incident here      recorded. It is plain that all the authoress cared about was that the women      should be hanged: as for attempting to realise, or to make her readers realise,      how the hanging was done, this was of no consequence. The reader must take her      word for it and ask no questions. Lord Grimthorpe wrote:');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('22', 'Then they had all been in      Ulysses’ service over twenty years; perhaps the twelve guilty ones had      been engaged more recently.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('23', 'Translation very doubtful—cf.      “It.” xxiv. 598.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('23', 'But why could she not at once ask      to see the scar, of which Euryclea had told her, or why could not Ulysses have      shown it to her?');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('23', 'The people of Ithaca seem to have      been as fond of carping as the Phaeacians were in vi. 273, etc.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('23', 'See note 156. Ulysses’s bed      room does not appear to have been upstairs, nor yet quite within the house. Is      it possible that it was “the domed room” round the outside of which      the erring maids were, for aught we have heard to the contrary, still hanging?');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('23', 'Ulysses bedroom in the mind of the      writer is here too apparently down stairs.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('23', 'Penelope having been now      sufficiently whitewashed, disappears from the poem.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('24', 'So practised a washerwoman as our      authoress doubtless knew that by this time the web must have become such a      wreck that it would have gone to pieces in the wash.');
+
+INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES ('24', 'We must suppose Dolius not yet to      know that his son Melanthius had been tortured, mutilated, and left to die by      Ulysses’ orders on the preceding day, and that his daughter Melantho had      been hanged. Dolius was probably exceptionally simple-minded, and his name was      ironical. So on Mt. Eryx I was shown a man who was always called Sonza Malizia      or “Guileless”—he being held exceptionally cunning.');
 

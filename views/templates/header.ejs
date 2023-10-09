@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="/styles.css">
   <script src="/site.js" async></script>
-  <script src="/theme.js"></script>
+  <script src="/theme.js" defer></script>
   <title><%= locals?.title ? locals.title + ' • ' : '' %>The Odyssey by Homer</title>
 </head>
-<body>
+<body id="body" style="display:none">
   <div id="wrapper">
   <header>
-    <h1><a href="/">The Odyssey by Homer</a></h1>
+    <h1>The Odyssey by Homer</h1>
     <nav>
       <ul>
         <li><a href="/">Home</a></li>

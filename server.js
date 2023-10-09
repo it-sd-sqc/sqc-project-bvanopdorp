@@ -42,6 +42,12 @@ export const queryChapter = async function (id) {
   return results.length === 1 ? results[0] : []
 }
 
+export const queryFootnotes = async function (id) {
+  const sql = `SELECT footnote_id, footnote_body FROM footnotes WHERE footnote_chapter_id=$1;`
+  const results = await query(sql,[id])
+  return results
+}
+
 // Server
 express()
   .use(express.static('public'))
@@ -63,8 +69,9 @@ express()
     const chapters = await queryChapters()
     const chapter = await queryChapter(1)
     const currentChapter = 1
+    const footnotes = await queryFootnotes(1)
     if (chapter?.chapter_title) {
-      res.render('pages/book', { chapters, chapter, currentChapter })
+      res.render('pages/book', { chapters, chapter, currentChapter, footnotes })
     } else {
       res.redirect('/chapters')
     }
@@ -81,8 +88,9 @@ express()
     const chapters = await queryChapters()
     const chapter = await queryChapter(req.params.ch)
     const currentChapter = req.params.ch
+    const footnotes = await queryFootnotes(currentChapter)
     if (chapter?.chapter_title) {
-      res.render('pages/book', { chapters, chapter, currentChapter })
+      res.render('pages/book', { chapters, chapter, currentChapter, footnotes })
     } else {
       res.redirect('/chapters')
     }
@@ -90,12 +98,3 @@ express()
 
 // Ready for browsers to connect ///////////////////////////
   .listen(PORT, () => console.log(`Listening on ${PORT}`))
-
-// const app = express();
-// app.use(express.static('./public'));
-
-// const displayPort = function () {
-//   console.log('Listening on ' + PORT);
-// }
-
-// app.listen(PORT, displayPort);
