@@ -32,9 +32,9 @@ const chapterIds = [
 ]
 
 // Base SQL query
-const sqlHeader = `\\encoding UTF8
-DROP TABLE IF EXISTS chapters;
+const sqlHeader = `SET client_encoding = 'UTF8';
 DROP TABLE IF EXISTS footnotes;
+DROP TABLE IF EXISTS chapters;
 
 CREATE TABLE chapters (
   chapter_id SERIAL PRIMARY KEY,
@@ -45,15 +45,13 @@ CREATE TABLE chapters (
 
 CREATE TABLE footnotes (
   footnote_id SERIAL PRIMARY KEY,
-  footnote_body TEXT NOT NULL
+  footnote_chapter_id SERIAL,
+  footnote_body TEXT NOT NULL,
+  FOREIGN KEY (footnote_chapter_id) REFERENCES chapters (chapter_id)
 );
 
 INSERT INTO chapters (chapter_title, chapter_synopsis, chapter_body) VALUES
 `
-
-// TODO Footnotes extraction
-// const insertFootnotesSql = `INSERT INTO footnotes (footnote_body) VALUES
-// `
 
 // Extraction functions
 const extractTitle = function (root, id) {
@@ -75,10 +73,27 @@ const extractBody = function (root, id) {
   const titleIdNode = root.querySelector(`h2 > a#${id}`)
   const chapterNode = titleIdNode.closest('div.chapter')
   const body = chapterNode.querySelectorAll(`p:not([class])`)
+  let footnoteCounter = 1;
 
-  // TODO rework the existing footnote links so they don't point to gutenberg
-  // Working plan is to extract the footnote into the database and use that data
-  // to present each footnote as mouseover tooltips
+  // The footnotes in the base document are all placed at the bottom of the page with links to them
+  // We're using them to build tooltips, so we need to adjust the href, change the superscript
+  // and append a span that will take the footnote content later
+  body.forEach(p => {
+    const anchorTags = p.querySelectorAll('a')
+    anchorTags.forEach(a => {
+      a.setAttribute('href', `#footnote-${footnoteCounter}`)
+
+      const supTags = a.querySelectorAll('sup')
+      supTags.forEach(sup => {
+        // set the <sup> content to our counter so footnote links start over at [1] for each chapter
+        sup.textContent = `[${footnoteCounter}]`
+        // Add a tooltip box so we can set up hover effects to show the content
+        const tooltip = '<span class="tooltip"></span>'
+        a.innerHTML += tooltip
+        footnoteCounter++
+      })
+    })
+  })
 
   // Body is an array of <p> elements, so when it gets converted into a string they are separated by commas
   // We need to wrap each paragraph in a <p> tag,
@@ -87,24 +102,56 @@ const extractBody = function (root, id) {
   return bodyText.join('\n\n')
 }
 
+const extractFootnoteBody = function (root, id) {
+  const footnoteNode = root.querySelector(`a#linknote-${id}`)
+  const footnoteTextNode = footnoteNode.parentNode.nextElementSibling
+  let footnoteText = footnoteTextNode.textContent
+  // The footnote text has a ton of stuff we don't want, so lets clean it up
+  footnoteText = footnoteText.replace(/\[\d+\]\s*/,'')
+  footnoteText = footnoteText.replace(/(\r\n|\n|\r)/gm, '')
+  footnoteText = footnoteText.replace(/\[|\]/g, '')
+  footnoteText = footnoteText.trim()
+  return footnoteText
+}
+
 // Conversion //////////////////////////////////////////////
 const src = readFileSync(srcPath, 'utf8')
 const domRoot = parse(src)
 
-// Extract the main content chapters
+// Extract the main content chapters and footnotes
 const chapters = []
+const footnotes = []
 
 chapterIds.forEach(
   (id) => {
-    // Extract the title
+    // Extract the chapter data
     const title = extractTitle(domRoot, id)
     const synopsis = extractSynopsis(domRoot, id)
     const body = extractBody(domRoot, id)
+    const chapterIndex = chapterIds.indexOf(id) + 1
 
     chapters.push({
       title,
       synopsis,
       body
+    })
+
+    // Get a node list of each footnote in the current chapter
+    const titleIdNode = domRoot.querySelector(`h2 > a#${id}`)
+    const chapterNode = titleIdNode.closest('div.chapter')
+    const footNoteNodeList = chapterNode.querySelectorAll('.pginternal')
+
+
+    // Extract the footnote content and tag it with the current chapter ID
+    footNoteNodeList.forEach((footNoteNode) => {
+      // We only want the number value of the id
+      const footnoteId = footNoteNode.id.split('-')[1]
+      const footnoteBody = extractFootnoteBody(domRoot, footnoteId)
+
+      footnotes.push({
+        chapterIndex,
+        footnoteBody
+      })
     })
   }
 )
@@ -118,4 +165,13 @@ chapters.slice(1).forEach((data) => {
   writeFileSync(fd, value)
 })
 writeFileSync(fd, ';\n\n')
+
+// Separate insert commands for each footnote
+footnotes.forEach((footnote) => {
+  let footnotesSql = `INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES `
+  footnotesSql += `('${footnote.chapterIndex}', '${footnote.footnoteBody}')`
+  footnotesSql += ';\n\n'
+  writeFileSync(fd, footnotesSql)
+})
+
 closeSync(fd)

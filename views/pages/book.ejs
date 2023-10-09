@@ -6,4 +6,29 @@
 <section id="content">
   <%- chapter.chapter_body %>
 </section>
+<section id="footnotes">
+  <% footnotes.forEach(function(footnote){ %>
+    <div id="footnote-<%= footnote.footnote_id %>">
+      <%= footnote.footnote_body %>
+    </div>
+  <% }); %>
+</section>
 <%- include('../templates/footer.ejs') %>
+
+<script>
+  const footnoteLinks = document.querySelectorAll('.pginternal')
+
+  // Add an event listener to each footnote anchor
+  footnoteLinks.forEach((link) => {
+    link.onmouseover = function() {
+      const footnoteId = this.id.split('-')[1]
+      const footnoteContent = document.getElementById(`footnote-${footnoteId}`).textContent
+
+      //  Set the footnote box content
+      const tooltip = this.querySelector('.tooltip')
+      if (tooltip) {
+        tooltip.textContent = footnoteContent
+      }
+  }
+})
+</script>
