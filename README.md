@@ -3,6 +3,8 @@ Ben VanOpdorp
 
 This site hosts an english translation of Homer's "The Odyssey"
 
+https://odyssey-hegl.onrender.com/book
+
 ## ER Diagrams
 ```mermaid
 erDiagram
