@@ -43,8 +43,8 @@ export const queryChapter = async function (id) {
 }
 
 export const queryFootnotes = async function (id) {
-  const sql = `SELECT footnote_id, footnote_body FROM footnotes WHERE footnote_chapter_id=$1;`
-  const results = await query(sql,[id])
+  const sql = 'SELECT footnote_id, footnote_body FROM footnotes WHERE footnote_chapter_id=$1;'
+  const results = await query(sql, [id])
   return results
 }
 

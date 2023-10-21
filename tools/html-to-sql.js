@@ -1,4 +1,3 @@
-import { strict as assert } from 'node:assert'
 import { closeSync, openSync, readFileSync, writeFileSync } from 'node:fs'
 import { parse } from 'node-html-parser'
 
@@ -65,15 +64,15 @@ const extractTitle = function (root, id) {
 const extractSynopsis = function (root, id) {
   const titleIdNode = root.querySelector(`h2 > a#${id}`)
   const chapterNode = titleIdNode.closest('div.chapter')
-  const synopsis = chapterNode.querySelector(`p.letter`).text
+  const synopsis = chapterNode.querySelector('p.letter').text
   return synopsis
 }
 
 const extractBody = function (root, id) {
   const titleIdNode = root.querySelector(`h2 > a#${id}`)
   const chapterNode = titleIdNode.closest('div.chapter')
-  const body = chapterNode.querySelectorAll(`p:not([class])`)
-  let footnoteCounter = 1;
+  const body = chapterNode.querySelectorAll('p:not([class])')
+  let footnoteCounter = 1
 
   // The footnotes in the base document are all placed at the bottom of the page with links to them
   // We're using them to build tooltips, so we need to adjust the href, change the superscript
@@ -107,7 +106,7 @@ const extractFootnoteBody = function (root, id) {
   const footnoteTextNode = footnoteNode.parentNode.nextElementSibling
   let footnoteText = footnoteTextNode.textContent
   // The footnote text has a ton of stuff we don't want, so lets clean it up
-  footnoteText = footnoteText.replace(/\[\d+\]\s*/,'')
+  footnoteText = footnoteText.replace(/\[\d+\]\s*/, '')
   footnoteText = footnoteText.replace(/(\r\n|\n|\r)/gm, '')
   footnoteText = footnoteText.replace(/\[|\]/g, '')
   footnoteText = footnoteText.trim()
@@ -141,7 +140,6 @@ chapterIds.forEach(
     const chapterNode = titleIdNode.closest('div.chapter')
     const footNoteNodeList = chapterNode.querySelectorAll('.pginternal')
 
-
     // Extract the footnote content and tag it with the current chapter ID
     footNoteNodeList.forEach((footNoteNode) => {
       // We only want the number value of the id
@@ -168,7 +166,7 @@ writeFileSync(fd, ';\n\n')
 
 // Separate insert commands for each footnote
 footnotes.forEach((footnote) => {
-  let footnotesSql = `INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES `
+  let footnotesSql = 'INSERT INTO footnotes (footnote_chapter_id, footnote_body) VALUES '
   footnotesSql += `('${footnote.chapterIndex}', '${footnote.footnoteBody}')`
   footnotesSql += ';\n\n'
   writeFileSync(fd, footnotesSql)
